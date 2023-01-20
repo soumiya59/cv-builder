@@ -4,7 +4,7 @@ import React from 'react'
 const Footer = () => (
 <footer className="mx-auto bg-white max-w-7xl sm:px-6 lg:px-8">
     <div className="grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
-        <div>
+        <div className='text-center '>
             <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase ">Company</h2>
             <ul className="text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
@@ -21,7 +21,7 @@ const Footer = () => (
                 </li>
             </ul>
         </div>
-        <div>
+        <div className='text-center '>
         <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase ">Help center</h2>
             <ul className="text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
@@ -38,7 +38,7 @@ const Footer = () => (
                 </li>
             </ul>
         </div>
-        <div>
+        <div className='text-center '>
             <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase ">Legal</h2>
             <ul className="text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
@@ -52,7 +52,7 @@ const Footer = () => (
                 </li>
             </ul>
         </div>
-        <div>
+        <div className='text-center '>
             <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase ">Download</h2>
             <ul className="text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
