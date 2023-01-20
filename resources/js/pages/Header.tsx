@@ -1,26 +1,3 @@
-// import React from 'react'
-// import tw from 'twin.macro'
-
-// const Wrapper = tw.section`relative flex flex-wrap justify-between items-center px-2 py-3 bg-pink-500 mb-3`
-// const UL = tw.li`flex flex-col lg:flex-row list-none lg:ml-auto`
-// // const LI = tw.li`nav-item`
-// const A = tw.a`px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75`
-
-// const Component = () => (
-//   <Wrapper>
-//   <img src="images/logo.png" alt="logo" className='inline-block mr-4 w-44' />
-//   <div className="items-center flex-grow lg:flex"id="example-navbar-danger" >
-//   <ul>
-//     <li> <A href="h">hello</A> </li>
-//     <li> <A href="h">hello</A> </li>
-//     <li> <A href="h">hello</A> </li>
-//   </ul>
-//   </div>
-//   </Wrapper>
-// )
-// export default Component;
-
-
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 
