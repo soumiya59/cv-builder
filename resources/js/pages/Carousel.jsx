@@ -57,7 +57,7 @@ const Carousel = () => {
         <div className="absolute flex justify-between w-full h-full top left">
           <button
             onClick={movePrev}
-            className="z-10 h-full pl-8 m-0 text-center text-white transition-all duration-300 ease-in-out opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed"
+            className="z-10 h-full pl-8 text-center text-white transition-all duration-300 ease-in-out opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed"
             disabled={isDisabled('prev')}
           >
             <svg
@@ -78,12 +78,12 @@ const Carousel = () => {
           </button>
           <button
             onClick={moveNext}
-            className="z-10 h-full pr-8 m-0 text-center text-white transition-all duration-300 ease-in-out opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed"
+            className="z-10 h-full pl-8 text-center text-white transition-all duration-300 ease-in-out opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed"
             disabled={isDisabled('next')}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-20 h-12 -ml-5 bg-slate-400 rounded-2xl"
+              className="w-20 h-12 xl:mr-8 bg-slate-400 rounded-2xl"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -106,7 +106,7 @@ const Carousel = () => {
             return (
               <div
                 key={index}
-                className="relative px-8 text-center carousel-item snap-start"
+                className="relative px-5 text-center carousel-item snap-start"
               >
                 <a
                   href={resource.link}
@@ -116,7 +116,7 @@ const Carousel = () => {
                   <img
                     src={resource.imageUrl || ''}
                     alt={resource.title}
-                    className=""
+                    className="shadow-md "
                   />
                 </a>
 
@@ -124,7 +124,7 @@ const Carousel = () => {
                   href={resource.link}
                   className="absolute top-0 left-0 z-10 flex items-center w-full h-full transition-opacity duration-300 opacity-0 aspect-square hover:opacity-100 "
                 >
-                    <button className="p-3 mx-auto text-center text-white rounded-3xl bg-darkpink hover:opacity-90">
+                    <button className="p-3 px-5 mx-auto text-xl text-white center text-l rounded-3xl bg-darkpink hover:opacity-90">
                       Selectionner
                   </button>
                 </a>
