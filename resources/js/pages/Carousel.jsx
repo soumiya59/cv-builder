@@ -106,7 +106,7 @@ const Carousel = () => {
             return (
               <div
                 key={index}
-                className="relative px-5 text-center carousel-item snap-start"
+                className="relative mx-5 text-center carousel-item snap-start"
               >
                 <a
                   href={resource.link}
@@ -122,9 +122,9 @@ const Carousel = () => {
 
                 <a
                   href={resource.link}
-                  className="absolute top-0 left-0 z-10 flex items-center w-full h-full transition-opacity duration-300 opacity-0 aspect-square hover:opacity-100 "
+                  className="absolute top-0 left-0 flex items-center w-full h-full transition-opacity duration-300 opacity-0 hover:opacity-100 bg-slate-100/50 "
                 >
-                    <button className="p-3 px-5 mx-auto text-xl text-white center text-l rounded-3xl bg-darkpink hover:opacity-90">
+                    <button className="p-3 px-5 mx-auto text-2xl text-white shadow-md center text-l rounded-3xl bg-darkpink hover:opacity-95">
                       Selectionner
                   </button>
                 </a>
