@@ -13,7 +13,7 @@ const Footer = () => (
                     <a href="#" className="hover:underline">Careers</a>
                 </li>
                 <li className="mb-4">
-                    <a href="#" className="hover:underline">Brand Center</a>
+                    <a href="#" className="hover:underline">Templates</a>
                 </li>
                 <li className="mb-4">
                     <a href="#" className="hover:underline">Blog</a>
@@ -69,7 +69,7 @@ const Footer = () => (
             </ul>
         </div>
     </div>
-    <div className="px-4 py-6 bg-gray-100 md:flex md:items-center md:justify-between">
+    <div className="px-4 py-6 border-t-2 md:flex md:items-center md:justify-between ">
         <span className="text-sm text-gray-500 sm:text-center">© 2023 <a href="#">NovoCV™</a>. All Rights Reserved.
         </span>
         <div className="flex mt-4 space-x-6 sm:justify-center md:mt-0">
