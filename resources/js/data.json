@@ -1,0 +1,36 @@
+{
+  "resources": [
+    {
+      "link": "#",
+      "imageUrl": "images/templates/c1.jpg"
+    },
+    {
+      "link": "#",
+      "imageUrl": "images/templates/c8.jpg"
+    },
+    {
+      "link": "#",
+      "imageUrl": "images/templates/c3.jpg"
+    },
+    {
+      "link": "#",
+      "imageUrl": "images/templates/c4.jpg"
+    },
+    {
+      "link": "#",
+      "imageUrl": "images/templates/c6.jpg"
+    },
+    {
+      "link": "#",
+      "imageUrl": "images/templates/c3.jpg"
+    },
+    {
+      "link": "#",
+      "imageUrl": "images/templates/c4.jpg"
+    },
+    {
+      "link": "#",
+      "imageUrl": "images/templates/c6.jpg"
+    }
+  ]
+}
