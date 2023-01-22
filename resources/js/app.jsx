@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('app')).render(
         {/* <Header />         */}
         {/* <Modeles />         */}
         {/* <Footer />         */}
-        {/* <Home />  */}
+        <Home /> 
         {/* <Telecharger /> */}
     </> 
 );
