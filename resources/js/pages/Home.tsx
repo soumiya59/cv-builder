@@ -9,13 +9,13 @@ export default function Home() {
 	<div className="container w-full p-6 mx-auto">
 		<div className="flex items-center justify-between w-full">
 			<a className="flex items-center text-2xl font-bold text-indigo-400 no-underline hover:no-underline lg:text-4xl"  href="#"> 
-			<img src="images/logo.svg" className='w-40' alt="" /></a>
-			
+                <img src="images/logo.svg" className='w-40' alt="" />
+            </a>
 			<div className="flex content-center justify-end w-1/2">		
-				<a className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto" data-tippy-content="@twitter_handle" href="https://twitter.com/intent/tweet?url=#">
+				<a className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto" href="#">
                 Mes cv
 				</a>
-				<a className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto" data-tippy-content="#facebook_id" href="https://www.facebook.com/sharer/sharer.php?u=#">
+				<a className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto" href="#">
                 Mon profile
 				</a>
                 <button className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 ">
