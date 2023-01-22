@@ -5,7 +5,7 @@ export default function Modeles() {
   return (
     <div className='text-slate-700'  style={{fontFamily:'Montserrat ,sans-serif' }}>
         <nav className='px-4 pb-3 mx-auto mt-3 max-w-7xl sm:px-6 lg:px-8 '>
-            <img src="images/logo.png" alt="" className='w-40' />
+            <img src="images/logo.svg" alt="" className='w-40' />
             <div className='hidden float-right md:block bg-slate-200'>
               <div className='flex -mt-10' >
                   <div className='flex items-center'>

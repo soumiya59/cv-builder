@@ -5,18 +5,11 @@ mt-5
 `
 export default function MiniFooter() {
   return (
-    // <div classNameName='flex justify-around h-24'>
-    //     <img src="images/logo.png" alt="logo" classNameName='w-40 h-24' />
-    //     <p>heelo</p>
-    //     <p>heelo</p>
-    //     <p>heelo</p>
-    //     <p>heelo</p>
-    // </div>
     <footer className="text-gray-600 body-font">
   <div className="container flex flex-col flex-wrap px-5 py-5 mx-auto md:items-center lg:items-start md:flex-row md:flex-nowrap">
     <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
       <a className="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
-      <img src="images/logo.png" alt="" className="w-40" />
+      <img src="images/logo.svg" alt="" className="w-40" />
       </a>
     </div>
     <div className="flex flex-wrap flex-grow mt-5 text-center md:pl-20 md:mt-0 md:text-left">

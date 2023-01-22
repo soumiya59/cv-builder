@@ -5,7 +5,7 @@ export default function Modeles() {
   return (
     <div className='text-slate-700'  style={{fontFamily:'Montserrat ,sans-serif' }}>
         <nav className='px-4 pb-3 mx-auto mt-3 max-w-7xl sm:px-6 lg:px-8'>
-            <img src="images/logo.png" alt="" className='w-40 ' />
+            <img src="images/logo.svg" alt="" className='w-40 ' />
             <div className='hidden text-center md:block '>
               <div className='flex -mt-10' >
                   <div className='flex justify-center grow'>
@@ -35,7 +35,7 @@ export default function Modeles() {
           </p>
 
           <div className="flex items-center justify-center max-w-screen-md px-10 py-3 mt-12 bg-white shadow-xl rounded-2xl md:mx-auto 2xl:px-0 mx-7">
-            <div className="my-10 md:w-8/12 lg:w-5/12 lg:ml-20">
+            <div className="my-10 md:w-8/12 lg:w-5/12">
             <form>
             <div className="mb-6">
                 <input

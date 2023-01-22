@@ -8,11 +8,14 @@ import Footer from './pages/Footer'
 import Modeles from './pages/Modeles';
 import Carousel from './pages/Carousel';
 import Telecharger from './pages/Telecharger'
+import Home from './pages/Home';
+
 ReactDOM.createRoot(document.getElementById('app')).render(    
     <>
         {/* <Header />         */}
         {/* <Modeles />         */}
         {/* <Footer />         */}
-        <Telecharger /> 
+        {/* <Home />  */}
+        {/* <Telecharger /> */}
     </> 
 );
