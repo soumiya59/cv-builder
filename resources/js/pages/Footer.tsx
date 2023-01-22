@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const Footer = () => (
 <footer className="mx-auto bg-white max-w-7xl sm:px-6 lg:px-8">
     <div className="grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">

@@ -10,6 +10,10 @@ module.exports = {
     "./resources/**/**/*.tsx",
   ],
   theme: {
+    fontFamily:{
+     'pop': ['Poppins', 'sans-serif'],
+     'mont': ['Montserrat', 'sans-serif'],
+    },
     extend: {
       colors: {
       verydarkblue : '#134982',

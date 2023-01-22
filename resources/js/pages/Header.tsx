@@ -4,11 +4,11 @@ import { Transition } from "@headlessui/react";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-      <nav >
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <nav>
+        <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-screen-2xl">
           <div className="flex items-center h-16">
               <div>
-              <img className="w-40" src="images/logo.png" alt="logo" />
+              <img className="w-40" src="images/logo.svg" alt="logo" />
               </div>
               <div className="hidden ml-auto md:block">
                 <div className="flex items-baseline justify-end ml-10 space-x-4 ">
