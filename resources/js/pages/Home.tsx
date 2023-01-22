@@ -1,5 +1,12 @@
 import React from 'react'
 import '../../css/homeAnimation.css'
+import tw from 'twin.macro'
+const IMG = tw.img`
+xl:w-2/12 lg:w-1/5 w-1/4  mx-auto justify-around h-44 md:h-60 xl:h-64
+`
+const STEPS = tw.div`
+flex flex-wrap container mx-auto mt-14 px-3
+`
 export default function Home() {
   return (
 <div className="leading-normal tracking-normal text-gray-900" style={{fontFamily: 'Source Sans Pro, sans-serif'}}>
@@ -44,9 +51,21 @@ export default function Home() {
 		</div>
 	</div>
     <div className='h-full '>
-        <h1 className='px-3 mt-10 text-2xl text-center md:text-3xl '>4 ÉTAPES FACILES POUR CRÉER VOTRE CV </h1>
+        <h1 className='px-3 mt-8 text-2xl text-center md:mt-10 md:text-3xl'>4 ÉTAPES FACILES POUR CRÉER VOTRE CV </h1>
+        <STEPS className=''>
+            <IMG src="images/home/step1.png" alt="" className=''/>
+            <IMG src="images/home/step2.png" alt="" className=''/>
+            <IMG src="images/home/step3.png" alt="" className=''/>
+            <IMG src="images/home/step4.png" alt="" className=''/>
+        </STEPS>
+        <div className='container flex justify-around px-3 mx-auto mt-5 text-lg text-center xl:text-xl'>
+            <p className='-mr-10'>Choisir un modéle.</p>
+            <p className='pl-16 sm:pl-28 '>Remplir votre CV.</p>
+            <p className='md:pl-5'>Personnalisez le modéle</p>
+            <p className=''>Télécharger votre CV.</p>
+        </div>
     </div>
-    </div>
+</div>
 </div>
 
   )
