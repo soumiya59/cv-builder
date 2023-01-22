@@ -35,12 +35,12 @@ export default function Home() {
     {/* main */}
 	<div className="container flex flex-col flex-wrap items-center px-6 mx-auto md:flex-row">
         {/* left col */}
-		<div className="flex flex-col justify-center w-full mt-5 overflow-y-hidden xl:w-2/5 lg:items-start xl:mt-0">
+		<div className="flex flex-col justify-center w-full mt-5 overflow-y-hidden xl:w-2/5 lg:items-start xl:mt-0 md:pl-2.5 ">
 			<h1 className="mb-4 text-3xl font-bold leading-tight text-center md:text-5xl md:text-left slide-in-bottom-h1">CONSTRUCTEUR EN LIGNE FACILE</h1>
 			<p className="mb-8 text-2xl leading-normal text-center md:text-left slide-in-bottom-subtitle">Utilisation gratuite, rapide et efficace.</p>
 		
-			<div className="flex justify-center w-full pb-5 md:justify-start lg:pb-0 fade-in">
-                  <button className="px-5 py-3 text-2xl text-white rounded-3xl bg-darkpink hover:opacity-90">
+			<div className="flex justify-center w-full pb-5 md:justify-start lg:pb-0 fade-in ">
+                  <button className="px-5 py-3 text-2xl text-white transition duration-300 ease-in-out delay-140 rounded-3xl bg-darkpink hover:opacity-90 hover:-translate-y-1 hover:bg-lightpink hover:scale-110">
                     créer votre cv 
                   </button>
 			</div>
