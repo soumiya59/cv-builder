@@ -7,12 +7,12 @@ import Header from './pages/Header';
 import Footer from './pages/Footer'
 import Modeles from './pages/Modeles';
 import Carousel from './pages/Carousel';
+import Telecharger from './pages/Telecharger'
 ReactDOM.createRoot(document.getElementById('app')).render(    
     <>
         {/* <Header />         */}
-        <Modeles />        
-        
+        {/* <Modeles />         */}
         {/* <Footer />         */}
-
+        <Telecharger /> 
     </> 
 );
