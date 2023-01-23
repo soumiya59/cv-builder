@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../css/homeAnimation.css'
+import { Link } from 'react-router-dom'
 import tw from 'twin.macro'
 import Carousel from './Carousel'
 import Statistic from './Statistic'
@@ -28,9 +29,9 @@ return (
 				<a className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto" href="#">
                 Mes cv
 				</a>
-				<a className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto" href="#">
-                Mon profile
-				</a>
+				<p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto" >
+                <Link to='/profile'> Mon profile </Link>
+				</p>
                 <a href='#' className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 " >
                 Connexion
                 </a>
@@ -46,9 +47,9 @@ return (
 			<p className="mb-8 text-2xl leading-normal text-center md:text-left slide-in-bottom-subtitle">Utilisation gratuite, rapide et efficace.</p>
 		
 			<div className="flex justify-center w-full pb-5 md:justify-start lg:pb-0 fade-in ">
-                  <a href='#' className="px-5 py-3 text-2xl text-white transition duration-300 ease-in-out delay-75 rounded-3xl bg-darkpink hover:opacity-90 hover:-translate-y-1 hover:scale-110 ">
-                    créer votre cv 
-                  </a>
+                  <p className="px-5 py-3 text-2xl text-white transition duration-300 ease-in-out delay-75 rounded-3xl bg-darkpink hover:opacity-90 hover:-translate-y-1 hover:scale-110 ">
+                    <Link to="/modeles"> créer votre cv </Link>
+                  </p>
 			</div>
 		</div>
         {/* right col */}
@@ -130,11 +131,13 @@ return (
     {/* commencer maintenent div*/}
     <div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#e2f1ff" fill-opacity="1" d="M0,192L48,192C96,192,192,192,288,176C384,160,480,128,576,133.3C672,139,768,181,864,202.7C960,224,1056,224,1152,218.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        <path fill="#e2f1ff" fillOpacity="1" d="M0,192L48,192C96,192,192,192,288,176C384,160,480,128,576,133.3C672,139,768,181,864,202.7C960,224,1056,224,1152,218.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
         </svg>
         <CONTAINER className='bg-verylightblue'>
             <h1 className=' text-3xl xl:text-4xl'>Commencez dès aujourd'hui avec notre créateur de CV gratuit !</h1>
-            <a href='#' className="inline-block px-8 py-2 mt-8 mb-16 md:mb-24 text-2xl text-white rounded-full bg-darkpink hover:opacity-90" >Commencez Maintenent</a>
+            <p className="inline-block px-8 py-2 mt-8 mb-16 md:mb-24 text-2xl text-white rounded-full bg-darkpink hover:opacity-90" >
+            <Link to="/modeles"> Commencer Maintenent </Link>
+            </p>
         </CONTAINER>
     </div>
     {/* footer */}
