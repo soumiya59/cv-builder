@@ -1,17 +1,18 @@
 import React from 'react'
 import '../../css/homeAnimation.css'
 import tw from 'twin.macro'
+import Carousel from './Carousel'
 import Footer from './Footer'
 
-const IMG = tw.img`
-xl:w-2/12 lg:w-1/5 w-1/4  mx-auto justify-around h-44 md:h-60 xl:h-64 rounded-2xl
-`
-const STEPS = tw.div`
-flex flex-wrap container mx-auto mt-14 px-3
-`
-const COMMENCER = tw.div`
-text-center mx-auto bg-verylightblue
-`
+const IMG = tw.img` xl:w-2/12 lg:w-1/5 w-1/4  mx-auto justify-around h-44 md:h-60 xl:h-64 rounded-2xl `
+const STEPS = tw.div` flex flex-wrap container mx-auto mt-14 px-3 `
+const CONTAINER = tw.div` text-center mx-auto  xl:text-4xl md:text-3xl text-2xl `
+const TITLE = tw.h1` px-3 mt-16 md:mt-20 `
+const SOUSTITRE = tw.h1` text-lg md:text-2xl font-semibold `
+const DESCRIPTION = tw.h1` text-sm md:text-xl font-light `
+const CARD = tw.div`flex items-center`
+const ICON = tw.img` max-h-32  md:pr-5`
+
 export default function Home() {
 return (
 <div className="leading-normal tracking-normal text-gray-900" style={{fontFamily: 'Source Sans Pro, sans-serif'}}>
@@ -54,32 +55,76 @@ return (
 			<img className="w-4/6 mx-auto lg:mr-0 slide-in-bottom" src="images/banner.png" />
 		</div>
 	</div>
+
     {/* steps */}
-    <div className='h-full '>
-        <h1 className='px-3 mt-8 text-2xl text-center md:mt-10 md:text-3xl'>4 ÉTAPES FACILES POUR CRÉER VOTRE CV </h1>
+    <CONTAINER>
+        <TITLE>4 ÉTAPES FACILES POUR CRÉER VOTRE CV </TITLE>
         <STEPS className=''>
             <IMG src="images/home/step1.png" alt="" className=''/>
             <IMG src="images/home/step2.png" alt="" className=''/>
             <IMG src="images/home/step3.png" alt="" className=''/>
             <IMG src="images/home/step4.png" alt="" className=''/>
         </STEPS>
-        <div className='container flex justify-around px-3 mx-auto mt-5 text-lg text-center xl:text-xl'>
+        <div className='container flex justify-around px-3 mx-auto my-5 mb-15 text-lg text-center xl:text-xl'>
             <p className='-mr-10'>Choisir un modéle.</p>
             <p className='pl-16 sm:pl-28 '>Remplir votre CV.</p>
             <p className='md:pl-5'>Personnalisez le modéle</p>
             <p className=''>Télécharger votre CV.</p>
         </div>
-    </div>
+    </CONTAINER>
+
+    {/* modeles de cv */}
+    <CONTAINER>
+        <TITLE>MODÈLES DE CV PROFESSIONNELS</TITLE>
+        <Carousel/>
+    </CONTAINER>
+
+    {/* poourquoi novoCV */}
+    <CONTAINER>
+        <TITLE>Pourquoi utiliser le générateur de cv novocv?</TITLE>
+        <div className='grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-4 mt-10 md:mt-16 container mx-auto px-3 md:gap-9'>
+          <CARD>
+            <ICON src="/images/icons/fees.png"  alt="" />
+            <div>
+                <SOUSTITRE>Pas de frais cachés</SOUSTITRE>
+                <DESCRIPTION>Avec Novorésumé, vous ne passerez pas des heures à travailler sur votre CV, juste pour être frappé par un paywall caché.</DESCRIPTION>
+            </div>
+          </CARD>
+          <CARD>
+            <ICON src="/images/icons/edit.png" alt="" className=''/>
+            <div>
+                <SOUSTITRE>Modifiez votre CV en temps réel</SOUSTITRE>
+                <DESCRIPTION>Lorsque vous modifiez votre CV avec notre constructeur, vous verrez immédiatement les modifications appliquées à votre document.</DESCRIPTION>
+            </div>
+          </CARD>
+          <CARD>
+            <ICON src="/images/icons/feedback2.png" alt="" />
+            <div>
+                <SOUSTITRE>Avoir un retour</SOUSTITRE>
+                <DESCRIPTION>Obtenez une révision de CV gratuite de la part de nos partenaires ou envoyez-la à vos amis pour obtenir des commentaires.</DESCRIPTION>
+            </div>
+          </CARD>
+          <CARD>
+            <ICON src="/images/icons/protect.png" alt="" />
+            <div>
+                <SOUSTITRE>Contrôle des données et de la confidentialité</SOUSTITRE>
+                <DESCRIPTION>Nous ne partageons vos informations avec personne (sauf si vous nous le demandez explicitement)</DESCRIPTION>
+            </div>
+          </CARD>
+        </div>
+    </CONTAINER>
+
     {/* commencer maintenent div*/}
     <div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path fill="#e2f1ff" fill-opacity="1" d="M0,192L48,192C96,192,192,192,288,176C384,160,480,128,576,133.3C672,139,768,181,864,202.7C960,224,1056,224,1152,218.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
         </svg>
-        <COMMENCER>
-            <h1 className='xl:text-4xl md:text-3xl text-2xl'>Commencez dès aujourd'hui avec notre créateur de CV gratuit !</h1>
+        <CONTAINER className=' bg-verylightblue'>
+            <h1 className=''>Commencez dès aujourd'hui avec notre créateur de CV gratuit !</h1>
             <a href='#' className="inline-block px-8 py-2 mt-8 mb-16 md:mb-24 text-3xl text-white rounded-full bg-darkpink hover:opacity-90" >Commencez Maintenent</a>
-        </COMMENCER>
+        </CONTAINER>
     </div>
+
     {/* footer */}
     <Footer />
 </div>
