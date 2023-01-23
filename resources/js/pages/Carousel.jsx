@@ -83,7 +83,7 @@ const Carousel = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-20 h-12 xl:mr-8 bg-slate-400 rounded-2xl"
+              className="w-20 h-12 mr-8 bg-slate-400 rounded-2xl"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -122,7 +122,7 @@ const Carousel = () => {
 
                 <a
                   href={resource.link}
-                  className="absolute top-0 left-0 flex items-center w-full h-full transition-opacity duration-300 opacity-0 hover:opacity-100 bg-slate-100/50 "
+                  className="absolute top-0 left-0 flex items-center w-full h-full transition-opacity duration-300 opacity-0 hover:opacity-90 bg-slate-100/50 "
                 >
                     <button className="p-3 px-5 mx-auto text-2xl text-white shadow-md center text-l rounded-3xl bg-darkpink hover:opacity-95">
                       Selectionner
