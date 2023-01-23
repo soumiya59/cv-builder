@@ -1,3 +1,4 @@
+import MiniFooter from "./MiniFooter";
 const Profile = () => {
     const Cvs=[{
                 edition :'Dérnier édition : 16/01/2023 ',
@@ -6,6 +7,7 @@ const Profile = () => {
                 edition :'Dérnier édition : 16/01/2023 ',  
             }]
     return (
+        <div>
         <div className="container mx-auto    bg-white mb-10 pb-10" >
             <h1 className=' text-3xl font-Montserrat font-bold  leading-none tracking-tight pt-10 pb-20  text-gray-900 text-center md:text-4xl sm:text-4xl lg:text-5xl'>Mes CV</h1>
             <div className='  grid md:grid-cols-1 lg:grid-cols-2 w-5/6 mx-auto sm:grid-cols-1  gap-x-10 gap-y-14    '>
@@ -37,9 +39,9 @@ const Profile = () => {
                             <p className="font-Montserrat   text-3xl">créer nouveau cv</p>
                     </button>
             </div>
-            
         </div>
-       
+        <MiniFooter/>
+        </div>
     );
 }
 
