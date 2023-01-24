@@ -1,6 +1,18 @@
+import { useState } from "react";
+import Modal from "./SeConnectez";
 import Header from "./Header";
 import MiniFooter from "./MiniFooter";
-const Profile = () => {
+import TelechargerModal from "./TelechargerModal";
+import SupprimerModal from "./SupprimerModal";
+import Partager from "./Partager";
+function Profile(){
+    const [showModalTelecherger, setshowModalTelecherger] = useState(false);
+    const [showModalSupprimer, setshowModalSupprimer] = useState(false);
+    const [showModalPartager, setshowModalPartager] = useState(false);
+    function statemodaltelecharger(){ setshowModalTelecherger(!showModalTelecherger)}
+    function statemodalsupprimer(){ setshowModalSupprimer(!showModalSupprimer)}
+    function statemodalPartager(){ setshowModalPartager(!showModalPartager)}
+    
     const Cvs=[{
                 edition :'Dérnier édition : 16/01/2023 ',
             },
@@ -22,15 +34,30 @@ const Profile = () => {
                             <h1 className='font-Montserrat ml-2  font-bold text-4xl mb-3 text-gray-700'> _ _</h1>
                             <h5 className='text-gray-400 text-1xl mb-5 ml-2 '>{cv.edition} </h5>
                             <div className='flex justify-start ml-2 '>
-                                <img className=' w-6 h-6 md:w-10 md:h-auto ms:mt-1 mt-1 lg:-mt-2 -mr-3 mb-2' src="images/icons8-download-resume-50.png" alt="" /><a className=' mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100' >Télécharger</a>
+                                <img className=' w-6 h-6 md:w-10 md:h-auto ms:mt-1 mt-1 lg:-mt-2 -mr-3 mb-2' src="images/icons8-download-resume-50.png" alt="" />
+                                <button className="mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100" type="button" onClick={()=>statemodaltelecharger()}>
+                                    Télécharger
+                                </button> 
+                                
                             </div>
                             <div className='flex justify-start ml-2'>
-                                <img className='w-6 h-6 md:w-10 md:h-auto ms:mt-1 mt-1 lg:-mt-2 -mr-3 mb-2' src="images/icons8-pencil-50.png" alt="" /><a className=' mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100 ' >Modifier</a>
+                            <svg fill="none" className="w-6 h-6 md:w-10 md:h-auto ms:mt-1 mt-1 lg:-mt-2 -mr-3 mb-2 text-sky-300"  stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"></path>
+                            </svg><button className="mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100" type="button" onClick={()=>statemodalPartager()}>
+                                    Partager
+                                </button> 
+                               
+                            </div>
+                            <div className='flex justify-start ml-2'>
+                                <img className='w-6 h-6 md:w-10 md:h-auto ms:mt-1 mt-1 lg:-mt-2 -mr-3 mb-2' src="images/icons8-pencil-50.png" alt="" /><a href="#" className=' mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100 ' >Modifier</a>
+                               
                             </div>
                            
                             <div className='flex justify-start ml-2'>
-
-                                <img className='w-6 h-6 md:w-10 md:h-auto ms:mt-1 mt-1  lg:-mt-1 lg:-ml-1   -mr-3 mb-2' src="images/icons8-trash-50.png" alt="" /><a className=' mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100' >Supprimer</a>
+                                <img className='w-6 h-6 md:w-10 md:h-auto ms:mt-1 mt-1  lg:-mt-1 lg:-ml-1   -mr-3 mb-2' src="images/icons8-trash-50.png" alt="" />
+                                <button className="mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100" type="button" onClick={()=>statemodalsupprimer()}>
+                                Supprimer
+                                </button> 
                             </div>
                         </div>
                 </div>
@@ -43,7 +70,14 @@ const Profile = () => {
             </div>
         </div>
         <MiniFooter/>
+        
+        
+        {showModalTelecherger? <TelechargerModal showModalTelecherger={showModalTelecherger}  />:null}
+        {showModalSupprimer?<SupprimerModal statemodalsupprimer={showModalSupprimer} />:null}
+        {showModalPartager?<Partager showModalPartager={showModalPartager}/>:null}
+        
         </div>
+
     );
 }
 
