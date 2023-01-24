@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./SeConnectez";
+import Modal from "./SeConnecte";
 import Header from "./Header";
 import MiniFooter from "./MiniFooter";
 import TelechargerModal from "./TelechargerModal";

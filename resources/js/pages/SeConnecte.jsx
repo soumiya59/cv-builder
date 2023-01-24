@@ -1,5 +1,5 @@
 import React from "react";
-export default function Modal(showModal) {
+export default function SeConnecter(showModal) {
   const [close, setClose] = React.useState(showModal);
   function stateModal(){ setClose(!close)}
   return (
