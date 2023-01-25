@@ -1,11 +1,12 @@
 import React from "react";
-export default function SinscrireModal(showModal) {
-  const [close, setClose] = React.useState(showModal);
-  function stateModal(){ setClose(!close)}
+export default function SinscrireModal(showModalsinscrire) {
+    const [closesinsctire, setCclosesinsctire] = React.useState(showModalsinscrire);
+    function stateModal(){ setCclosesinsctire(!closesinsctire)}
+    
   return (
     <>
       
-      {close ? (
+      {closesinsctire ? (
         <>
           <div className="flex flex-col items-center justify-center px-4 py-4 mx-auto md:h-screen lg:py-0 overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none" >
          
@@ -46,6 +47,7 @@ export default function SinscrireModal(showModal) {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
+       
     </>
   );
 }
