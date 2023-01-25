@@ -2,11 +2,10 @@ import React,{useState} from 'react'
 import '../../css/homeAnimation.css'
 import { Link } from 'react-router-dom'
 import tw from 'twin.macro'
-import Carousel from './Carousel'
-import Statistic from './Statistic'
-import Footer from './Footer'
-import SeConnecter from './SeConnecte'
-
+import Carousel from './components/Carousel'
+import Statistic from './components/Statistic'
+import Footer from './components/Footer'
+import SeConnecter from './modals/SeConnecte'
 
 const IMG = tw.img` xl:w-2/12 lg:w-1/5 w-1/4  mx-auto justify-around h-44 md:h-60 xl:h-64 rounded-2xl `
 const STEPS = tw.div` flex flex-wrap container mx-auto mt-14 px-3 `
@@ -18,23 +17,23 @@ const CARD = tw.div`flex items-center`
 const ICON = tw.img` max-h-32  md:pr-5`
 
 export default function Home() {
-    const [showModalSeconnecter, setshowModalSeconnecter] = useState(false);
-    function statemodaltelecharger(){ setshowModalSeconnecter(!showModalSeconnecter)}
+const [showModalSeconnecter, setshowModalSeconnecter] = useState(false);
+function statemodaltelecharger(){ setshowModalSeconnecter(!showModalSeconnecter)}
 return (
 <div className="leading-normal tracking-normal text-gray-900" style={{fontFamily: 'Source Sans Pro, sans-serif'}}>
     <div className="h-screen bg-right bg-cover pb-14" style={{backgroundImage:"url('images/Background(4).svg')"}}>
     {/* nav */}
 	<div className="container w-full p-6 mx-auto">
 		<div className="flex items-center justify-between w-full">
-			<a className="flex items-center text-2xl font-bold text-indigo-400 no-underline hover:no-underline lg:text-4xl"  href="#"> 
+			<Link to="/" className="flex items-center "  > 
                 <img src="images/logo.svg" className='w-40' alt="" />
-            </a>
+            </Link>
 			<div className="flex content-center justify-end w-1/2">		
-				<a className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto" href="#">
-                Mes cv
-				</a>
-				<p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto" >
-                <Link to='/profile'> Mon profile </Link>
+				<p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
+                    <Link to="/profile">Mes cv</Link>
+				</p>
+				<p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
+                    <Link to='/monCompte'> Mon Compte </Link>
 				</p>
                 <button  className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 " onClick={()=>statemodaltelecharger()} > Connexion</button>
                 {/* Modal se connecter */}

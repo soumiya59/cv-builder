@@ -1,31 +1,26 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
+import { Link } from "react-router-dom";
 
-function Header() {
+export default function LogOutHeader() {
   const [isOpen, setIsOpen] = useState(false);
   return (
       <nav>
         <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-screen-2xl">
-          <div className="flex items-center h-16">
-              <div>
+          <div className="flex items-center h-16 mt-3">
+              <Link to='/'>
               <img className="w-40" src="images/logo.svg" alt="logo" />
-              </div>
+              </Link>
               <div className="hidden ml-auto md:block">
                 <div className="flex items-baseline justify-end ml-10 space-x-4 ">
-                  <a
-                    href="#"
-                    className="px-3 py-2 text-sm font-medium rounded-md hover:text-darkblue"
-                  >
-                    Mes CV
-                  </a>
-                  <a
-                    href="#"
-                    className="px-3 py-2 text-sm font-medium rounded-md hover:text-darkblue"
-                  >
-                    Mon Compte
-                  </a>
+                  <p className="px-3 py-2 text-sm rounded-md hover:text-indigo-800 font-semibold text-gray-600" >
+                    <Link to="/profile">Mes cv</Link>
+                  </p>
+                  <p className="px-3 py-2 text-sm rounded-md hover:text-indigo-800 font-semibold text-gray-600" >
+                    <Link to='/monCompte'> Mon Compte </Link>
+                  </p>
                   <button className="p-3 text-white rounded-3xl bg-darkpink hover:opacity-90">
-                    Connexion
+                    <Link to='/'> Se déconnecter </Link>
                   </button>
               </div>
             </div>
@@ -104,6 +99,5 @@ function Header() {
   );
 }
 
-export default Header;
 
 

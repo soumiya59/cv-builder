@@ -7,7 +7,7 @@ import Modeles from './pages/Modeles';
 import Telecharger from './pages/Telecharger'
 import Profile from '../js/pages/Profile'
 import Home from './pages/Home';
-import TelechargerModal from './pages/TelechargerModal';
+import TelechargerModal from './pages/modals/TelechargerModal';
 
 
 ReactDOM.createRoot(document.getElementById('app')).render(    
