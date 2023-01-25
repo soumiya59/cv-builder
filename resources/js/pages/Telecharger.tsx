@@ -1,11 +1,13 @@
 import React from 'react'
-import MiniFooter from './MiniFooter'
-
+import MiniFooter from './components/MiniFooter'
+import { Link } from 'react-router-dom'
 export default function Modeles() {
   return (
     <div className='text-slate-700'  style={{fontFamily:'Montserrat ,sans-serif' }}>
-        <nav className='px-4 pb-3 mx-auto mt-3 max-w-7xl sm:px-6 lg:px-8'>
-            <img src="images/logo.svg" alt="" className='w-40 ' />
+        <nav className='px-4 mx-auto my-3 max-w-7xl sm:px-6 lg:px-8'>
+            <Link to="/" className=' bg-slate-600'>
+                <img src="images/logo.svg" alt="" className='w-40 ' />
+            </Link>
             <div className='hidden text-center md:block '>
               <div className='flex -mt-10' >
                   <div className='flex justify-center grow'>

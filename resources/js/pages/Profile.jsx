@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Modal from "./SeConnecte";
-import Header from "./Header";
-import MiniFooter from "./MiniFooter";
-import TelechargerModal from "./TelechargerModal";
-import SupprimerModal from "./SupprimerModal";
-import Partager from "./Partager";
+import Modal from "./modals/SeConnecte";
+import LogOutHeader from './components/LogOutHeader'
+import MiniFooter from "./components/MiniFooter";
+import TelechargerModal from "./modals/TelechargerModal";
+import SupprimerModal from "./modals/SupprimerModal";
+import Partager from "./modals/Partager";
 function Profile(){
     const [showModalTelecherger, setshowModalTelecherger] = useState(false);
     const [showModalSupprimer, setshowModalSupprimer] = useState(false);
@@ -21,12 +21,12 @@ function Profile(){
             }]
     return (
         <div>
-            <Header />
-        <div className="container mx-auto    bg-white mb-10 pb-10" >
+            <LogOutHeader />
+            <div className="container mx-auto    bg-white mb-10 pb-10" >
             <h1 className=' text-3xl font-Montserrat font-bold  leading-none tracking-tight pt-10 pb-20  text-gray-900 text-center md:text-4xl sm:text-4xl lg:text-5xl'>Mes CV</h1>
             <div className='  grid md:grid-cols-1 lg:grid-cols-2 w-5/6 mx-auto sm:grid-cols-1  gap-x-10 gap-y-14    '>
             {Cvs.map(cv=>
-                <div className=' bg-[#fbffff]  shadow-xl rounded-lg md:pb-10 sm:pb-5  pb-6 border-2 border-[#d4ebee] flex flex-row transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 '>
+                <div className=' bg-[#fbffff]  shadow-xl rounded-lg md:pb-10 sm:pb-5  pb-6 border-2 border-[#d4ebee] flex flex-row transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300  '>
                         <div className='basis-3/6  sm:px-2 md:p-x-2'>
                             <img className=' sm:-mt-10 -mt-7 border-4 rounded-lg  border-[#cceef4] ' src="images/cv-templates-resumelab_cubic@3x.png" alt="" />
                         </div>
@@ -41,9 +41,11 @@ function Profile(){
                                 
                             </div>
                             <div className='flex justify-start ml-2'>
-                            <svg fill="none" className="w-6 h-6 md:w-10 md:h-auto ms:mt-1 mt-1 lg:-mt-2 -mr-3 mb-2 text-sky-300"  stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            {/* <svg fill="none" className="w-6 h-6 md:w-10 md:h-auto ms:mt-1 mt-1 lg:-mt-2 -mr-3 mb-2 text-sky-300"  stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"></path>
-                            </svg><button className="mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100" type="button" onClick={()=>statemodalPartager()}>
+                            </svg> */}
+                                <img src="images/icons/share.png" className=" w-7 mb-2 md:w-10 md:mb-3    " />
+                                <button className="mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100" type="button" onClick={()=>statemodalPartager()}>
                                     Partager
                                 </button> 
                                
@@ -63,12 +65,13 @@ function Profile(){
                 </div>
                 )} 
             </div> 
-            <div class="grid place-items-center mt-20">
-                    <button id="btn-creastion" className="pb-7    text-center   h-12  w-72 text-white rounded-3xl bg-darkpink hover:opacity-90">
+            <div className="grid place-items-center mt-20">
+                    <button id="btn-creastion" className="py-2 px-4 text-center text-white rounded-3xl bg-darkpink hover:opacity-90">
                             <p className="font-Montserrat   text-3xl">créer nouveau cv</p>
                     </button>
             </div>
         </div>
+        <hr className="container mx-auto" />
         <MiniFooter/>
         
         

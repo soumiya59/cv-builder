@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useRef, useEffect } from 'react';
 
 // Data
-import data from '../data.json';
+import data from '../../data.json';
 
 const Carousel = () => {
   const maxScrollWidth = useRef(0);
