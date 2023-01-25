@@ -13,10 +13,10 @@ export default function LogOutHeader() {
               </Link>
               <div className="hidden ml-auto md:block">
                 <div className="flex items-baseline justify-end ml-10 space-x-4 ">
-                  <p className="px-3 py-2 text-sm rounded-md hover:text-indigo-800 font-semibold text-gray-600" >
+                  <p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
                     <Link to="/profile">Mes cv</Link>
                   </p>
-                  <p className="px-3 py-2 text-sm rounded-md hover:text-indigo-800 font-semibold text-gray-600" >
+                  <p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
                     <Link to='/monCompte'> Mon Compte </Link>
                   </p>
                   <button className="p-3 text-white rounded-3xl bg-darkpink hover:opacity-90">
