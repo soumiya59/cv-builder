@@ -1,16 +1,15 @@
 import React from 'react'
 import tw from 'twin.macro'
-const P = tw.p`
-mt-5
-`
+import { Link } from 'react-router-dom'
+// const P = tw.p` mt-5 `
 export default function MiniFooter() {
   return (
     <footer className="text-gray-600 body-font">
   <div className="container flex flex-col flex-wrap px-5 py-5 mx-auto md:items-center lg:items-start md:flex-row md:flex-nowrap">
     <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
-      <a className="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
+      <Link to="/" className="flex items-center justify-center md:justify-start">
       <img src="images/logo.svg" alt="" className="w-40" />
-      </a>
+      </Link>
     </div>
     <div className="flex flex-wrap flex-grow mt-5 text-center md:pl-20 md:mt-0 md:text-left">
       <div className="w-full px-4 lg:w-1/4 md:w-1/2">

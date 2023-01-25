@@ -1,5 +1,5 @@
 import React from 'react'
-import Carousel from './Carousel'
+import Carousel from './components/Carousel'
 
 export default function Modeles() {
   return (

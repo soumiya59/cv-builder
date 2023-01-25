@@ -1,7 +1,12 @@
-import React from "react";
+import React ,{useState}from "react";
+import SinscrireModal from "./SinscrireModal";
 export default function SeConnecter(showModal) {
-  const [close, setClose] = React.useState(showModal);
+  const [close, setClose] = useState(showModal);
   function stateModal(){ setClose(!close)}
+  const [showModalsinscrire, setshowModalsinscrire] = useState(false);
+  function statemodalsinscrire(){ setshowModalsinscrire(!showModalsinscrire)
+  setClose(false)
+  }
   return (
     <>
       
@@ -21,8 +26,9 @@ export default function SeConnecter(showModal) {
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
+                 
                   </div>
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+              <h1 className="text-xl font-bold leading-tight tracking-tight italic underline text-gray-900 md:text-2xl">
               se connecter
               </h1>
               <p className="font-light">Veuillez saisir votre adresse email et votre mot de passe pour vous connecter</p>
@@ -37,7 +43,9 @@ export default function SeConnecter(showModal) {
                   </div>
                   
                   <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 bg-sky-700 focus:ring-sky-800">S'identifier</button>
-                 
+                  <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                  Vous n'avez pas encore de compte?  <button class="font-medium text-sky-600 hover:underline dark:text-primary-500" onClick={()=>statemodalsinscrire()}>S'inscrire</button>
+                  </p>
               </form>
           </div>
         </div>
@@ -45,6 +53,8 @@ export default function SeConnecter(showModal) {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
+      
+      {showModalsinscrire? <SinscrireModal showModalsinscrire={showModalsinscrire}  />:null}
     </>
   );
 }
