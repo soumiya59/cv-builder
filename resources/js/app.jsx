@@ -8,6 +8,7 @@ import Telecharger from './pages/Telecharger'
 import Profile from '../js/pages/Profile'
 import Home from './pages/Home';
 import TelechargerModal from './pages/modals/TelechargerModal';
+import MonCompt from './pages/MonCompte';
 
 
 ReactDOM.createRoot(document.getElementById('app')).render(    
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('app')).render(
               <Route path="/profile" element={<Profile />} />
               <Route path="/modeles" element={<Modeles  />} />
               <Route path="/telecharger" element={<Telecharger  />} />
+              <Route path="/MonCompte" element={<MonCompt  />} />
         </Routes>
     </Router> 
 );
