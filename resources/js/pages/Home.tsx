@@ -33,7 +33,7 @@ return (
                     <Link to="/profile">Mes cv</Link>
 				</p>
 				<p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
-                    <Link to='/monCompte'> Mon Compte </Link>
+                    <Link to='/MonCompte'> Mon Compte </Link>
 				</p>
                 <button  className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 " onClick={()=>statemodaltelecharger()} > Connexion</button>
                 {/* Modal se connecter */}
