@@ -10,10 +10,10 @@ import SeConnecter from './modals/SeConnecte'
 const IMG = tw.img` xl:w-2/12 lg:w-1/5 w-1/4  mx-auto justify-around h-44 md:h-60 xl:h-64 rounded-2xl `
 const STEPS = tw.div` flex flex-wrap container mx-auto mt-14 px-3 `
 const CONTAINER = tw.div`text-center mx-auto px-5 md:px-0`
-const TITLE = tw.h1` px-3 py-5 mt-16 md:mt-20 xl:text-4xl md:text-3xl text-2xl mb-10 `
+const TITLE = tw.h1` px-3 py-5 mt-16 md:mt-20 xl:text-4xl md:text-3xl text-2xl mb-10 uppercase`
 const SOUSTITRE = tw.h1` text-lg md:text-2xl font-semibold `
 const DESCRIPTION = tw.h1` text-sm md:text-xl font-light `
-const CARD = tw.div`flex items-center`
+const CARD = tw.div`flex items-center `
 const ICON = tw.img` max-h-32  md:pr-5`
 
 export default function Home() {
