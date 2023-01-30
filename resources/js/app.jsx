@@ -7,19 +7,26 @@ import Modeles from './pages/Modeles';
 import Telecharger from './pages/Telecharger'
 import Profile from '../js/pages/Profile'
 import Home from './pages/Home';
-import TelechargerModal from './pages/modals/TelechargerModal';
+
 import MonCompt from './pages/MonCompte';
+import Abuot from './pages/Abuot';
+import Cvzohayr1 from './pages/CVs/Cvzohayr1';
 
 
 ReactDOM.createRoot(document.getElementById('app')).render(    
-    <Router>
+    
+    <div>
+        {/* <Router> */}
+        <Cvzohayr1 />
         {/* <Home />  */}
-        <Routes>
+       {/*  <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/modeles" element={<Modeles  />} />
               <Route path="/telecharger" element={<Telecharger  />} />
               <Route path="/MonCompte" element={<MonCompt  />} />
+              <Route path="/About" element={<Abuot />} />
         </Routes>
-    </Router> 
+    </Router>  */}
+     </div>
 );
