@@ -1,7 +1,10 @@
-import React from 'react'
+import React,{useState} from 'react'
 import MiniFooter from './components/MiniFooter'
 import { Link } from 'react-router-dom'
+import SeConnecter from './modals/SeConnecte'
 export default function Modeles() {
+    const [showModalSeconnecter, setshowModalSeconnecter] = useState(false);
+    function statemodaltelecharger(){ setshowModalSeconnecter(!showModalSeconnecter)}
   return (
     <div className='text-slate-700'  style={{fontFamily:'Montserrat ,sans-serif' }}>
         <nav className='px-4 mx-auto my-3 max-w-7xl sm:px-6 lg:px-8'>
@@ -99,11 +102,12 @@ export default function Modeles() {
             Continue with Google
             </a>
             </form>
-            <p className='mt-5 text-center'>Vous avez déjà un compte? <a href="#" className=' text-darkblue'>s'identifier</a> </p>
+            <button className='mt-5 text-center' onClick={()=>statemodaltelecharger()}>Vous avez déjà un compte? <span className=' text-darkblue'>s'identifier</span> </button>
             </div>
           </div>
         </section>
         <MiniFooter />
+        {showModalSeconnecter?<SeConnecter showModal={showModalSeconnecter}/>:null}
     </div>
   )
 }

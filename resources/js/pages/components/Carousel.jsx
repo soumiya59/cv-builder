@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 
 // Data
 import data from '../../data.json';
@@ -125,7 +126,7 @@ const Carousel = () => {
                   className="absolute top-0 left-0 flex items-center w-full h-full transition-opacity duration-300 opacity-0 hover:opacity-90 bg-slate-100/50 "
                 >
                     <button className="p-3 px-5 mx-auto text-2xl text-white shadow-md center text-l rounded-3xl bg-darkpink hover:opacity-95">
-                      Selectionner
+                    <Link to="/editeur">Selectionner</Link>
                   </button>
                 </a>
               </div>
