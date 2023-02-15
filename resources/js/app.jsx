@@ -12,9 +12,9 @@ import '../css/app.css'
 import './bootstrap';
 import GlobalStyles from '../css/globalstyles';
 import { BrowserRouter as Router , Routes, Route} from "react-router-dom";  
+import { Provider } from "react-redux";
 
 import Cvzohayr1 from './pages/CVs/Cvzohayr1';
-import { Provider } from "react-redux";
 
 
 ReactDOM.createRoot(document.getElementById('app')).render(  
