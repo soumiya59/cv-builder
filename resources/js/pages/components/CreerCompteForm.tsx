@@ -8,7 +8,7 @@ export default function CreerCompteFrom(){
                 <input
                 type="text"
                 className="block w-full px-4 py-2 m-0 text-xl font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                placeholder="Email address"
+                placeholder="login"
                 />
             </div>
             <div className="mb-6">
@@ -16,6 +16,13 @@ export default function CreerCompteFrom(){
                 type="password"
                 className="block w-full px-4 py-2 m-0 text-xl font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 placeholder="Mot de Passe"
+                />
+            </div>
+            <div className="mb-6">
+                <input
+                type="password"
+                className="block w-full px-4 py-2 m-0 text-xl font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                placeholder="confirmer le mot de pass"
                 />
             </div>
             <button
