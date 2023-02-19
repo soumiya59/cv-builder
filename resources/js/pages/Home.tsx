@@ -6,6 +6,7 @@ import Carousel from './components/Carousel'
 import Statistic from './components/Statistic'
 import Footer from './components/Footer'
 import SeConnecter from './modals/SeConnecte'
+import CreerCompte from './modals/CreerCompte'
 import { Transition } from "@headlessui/react";
 
 
@@ -19,30 +20,30 @@ const CARD = tw.div`flex items-center `
 const ICON = tw.img` max-h-32  md:pr-5`
 
 export default function Home() {
-const [showModalSeconnecter, setshowModalSeconnecter] = useState(false);
-function statemodaltelecharger(){ setshowModalSeconnecter(!showModalSeconnecter)}
+const [showModal, setShowModal] = useState(false);
 const [isOpen, setIsOpen] = useState(false);
 return (
 <div className="leading-normal tracking-normal text-gray-900" style={{fontFamily: 'Source Sans Pro, sans-serif'}}>
     <div className="h-screen bg-right bg-cover pb-14" style={{backgroundImage:"url('images/Background(4).svg')"}}>
     {/* nav */}
-	<nav>
+	  <nav>
         <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-screen-2xl">
           <div className="flex items-center h-16 pt-3">
               <Link to='/'>
               <img className="w-40" src="images/logo.svg" alt="logo" />
               </Link>
               <div className="hidden ml-auto md:block">
-                <div className="flex items-baseline justify-end ml-10 space-x-4 ">
+                <div className="flex items-baseline justify-end space-x-4 text-base">
                   <p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
                     <Link to="/profile">Mes cv</Link>
                   </p>
                   <p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
                     <Link to='/monCompte'> Mon Compte </Link>
                   </p>
-                  <button className="p-3 text-white rounded-3xl bg-darkpink hover:opacity-90">
-                    <Link to='/'> Se Connecter </Link>
-                  </button>
+                  <button  className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 " onClick={() => setShowModal(true)} > Connexion</button>
+                  <div>
+                  {showModal && <CreerCompte setShowModal={setShowModal}/>}
+                  </div>
               </div>
             </div>
             <div className="flex justify-end flex-auto -mr-2 md:hidden">

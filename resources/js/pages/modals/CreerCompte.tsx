@@ -1,46 +1,28 @@
-import React,{useState} from 'react'
-import MiniFooter from './components/MiniFooter'
-import { Link } from 'react-router-dom'
-import SeConnecter from './modals/SeConnecte'
-export default function telecharger() {
-    const [showModalSeconnecter, setshowModalSeconnecter] = useState(false);
-    function statemodaltelecharger(){ setshowModalSeconnecter(!showModalSeconnecter)}
-  return (
-    <div className='text-slate-700'  style={{fontFamily:'Montserrat ,sans-serif' }}>
-        <nav className='px-4 mx-auto my-3 max-w-7xl sm:px-6 lg:px-8'>
-            <Link to="/" className=' bg-slate-600'>
-                <img src="images/logo.svg" alt="" className='w-40 ' />
-            </Link>
-            <div className='hidden text-center md:block '>
-              <div className='flex -mt-10' >
-                  <div className='flex justify-center grow'>
-                    <div className='flex items-center pl-12'>
-                        <img src="images/t1.png" alt=""  className='w-4/12 '/>
-                        <p className='ml-1'>Modèles</p>
-                    </div>
-                    <div className='flex items-center mx-4'>
-                        <img src="images/m2.png" alt="" className='w-3/12'/>
-                        <p className='ml-1'>Information</p>
-                    </div>
-                    <div className='flex items-center '>
-                        <img src="images/t3.png" alt="" className='w-3/12'/>
-                        <p className='ml-1 font-semibold'>Télécharger</p>
-                    </div>
-                  </div>
-                  <div>
-                    <a href="#" className='flex-none text-xl align-middle hover:text-darkblue'>Mes CV</a>
-                  </div>
-              </div>
-            </div>
-        </nav>
-        <section className='h-screen bg-verylightblue'>
-          <h1 className='pt-10 text-4xl font-bold text-center text-slate-700 font-mont' >créer un compte pour obtenir votre CV</h1>
-          <p className='px-2 pt-5 mx-auto text-center'>
-            Téléchargements, partages et impressions illimités
-          </p>
+import React from "react";
 
-          <div className="flex items-center justify-center max-w-screen-md px-10 py-3 mt-12 bg-white shadow-xl rounded-2xl md:mx-auto 2xl:px-0 mx-7">
-            <div className="my-10 md:w-8/12 lg:w-5/12">
+export default function Modal({setShowModal}) {
+  return (
+    <>
+        <div
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none "
+          >
+            <div className="relative w-auto my-6 mx-auto max-w-3xl ">
+              {/*content*/}
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none md:px-5">
+                {/*header*/}
+                <div className="flex items-start justify-between p-5 rounded-t">
+                  <h3 className="text-3xl font-semibold">
+                    S'inscrire
+                  </h3>
+                  <button
+                    className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none opacity-40"
+                    onClick={() =>setShowModal(false)}
+                  > <span className="bg-transparent text-black  h-6 w-6 text-2xl block outline-none focus:outline-none"> X </span>
+                  </button>
+                </div>
+                {/*body*/}
+                <div className="relative px-6 flex-auto">
+                  <p className="text-slate-500 text-lg leading-relaxed mb-8 mt-3"> Créez un compte GRATUIT pour télécharger votre CV </p>
             <form>
             <div className="mb-6">
                 <input
@@ -82,12 +64,13 @@ export default function telecharger() {
             > <img src="https://img.icons8.com/fluency/48/null/google-logo.png" className='w-4.5 h-4 mr-2'/> Continue with Google </a>
             </form>
 
-            <button className='mt-5 text-center' onClick={()=>statemodaltelecharger()}>Vous avez déjà un compte? <span className=' text-darkblue'>s'identifier</span> </button>
+            <button className='my-5 text-slate-500 text-lg leading-relaxed mb-5'>Vous avez déjà un compte? <span className=' text-darkblue'>s'identifier</span> </button>
+            </div>
             </div>
           </div>
-        </section>
-        <MiniFooter />
-        {showModalSeconnecter?<SeConnecter showModal={showModalSeconnecter}/>:null}
-    </div>
-  )
+          </div>
+        <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+    </>
+      
+  );
 }
