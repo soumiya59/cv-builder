@@ -15,7 +15,7 @@ export default function SeConnecter(showModal) {
           <div className="flex flex-col items-center justify-center px-4 py-4 mx-auto md:h-screen lg:py-0 overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none" >
          
       <div className="w-full bg-white rounded-lg shadow border  md:mt-0 md:w-2/6 sm:w-3/6 xl:p-0">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8 ">
+          <div className="p-9 space-y-4 md:space-y-6 sm:p-8 ">
           <div className="relative">
                   <button
                     className="bg-white rounded-md p-2 absolute top-0 right-0   text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"

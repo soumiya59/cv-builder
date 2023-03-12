@@ -1,6 +1,11 @@
 import React from "react";
 import CreerCompteFrom from "../components/CreerCompteForm";
+import SeConnecter from "./SeConnecte";
 export default function Modal({setShowModal}) {
+const [showModalSeconnecter, setshowModalSeconnecter] = React.useState(false);
+    const showSeconnecterModal=()=>{ 
+      setshowModalSeconnecter(!showModalSeconnecter)
+    }
   return (
     <>
         <div
@@ -24,11 +29,12 @@ export default function Modal({setShowModal}) {
                 <div className="relative px-6 flex-auto">
                   <p className="text-slate-500 text-lg leading-relaxed mb-8 mt-3 text -ml-5"> Créez un compte GRATUIT pour télécharger votre CV </p>
                 </div>
-                <CreerCompteFrom />
+              <CreerCompteFrom setshowModalSeconnecter={setshowModalSeconnecter} showModal={showModalSeconnecter}/>
               </div>
             </div>
           </div>
         <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        {showModalSeconnecter && <SeConnecter showModal={showSeconnecterModal}/>}
     </>
       
   );
