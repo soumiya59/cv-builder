@@ -42,7 +42,7 @@ return (
                   </p>
                   <button  className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 " onClick={() => setShowModal(true)} > Connexion</button>
                   <div>
-                  {showModal && <CreerCompte setShowModal={setShowModal}/>}
+                  {showModal && <CreerCompte showModal={showModal} setShowModal={setShowModal}/>}
                   </div>
               </div>
             </div>

@@ -1,5 +1,8 @@
 import React from "react"
 export default function CreerCompteFrom({setshowModalSeconnecter,showModal}){
+    function identifier(){
+        setshowModalSeconnecter(!showModal)
+    }
     return(
         <>
             <form>
@@ -50,7 +53,7 @@ export default function CreerCompteFrom({setshowModalSeconnecter,showModal}){
             > <img src="https://img.icons8.com/fluency/48/null/google-logo.png" className='w-4.5 h-4 mr-2'/> Continue with Google </a>
             </form>
             <p className='my-5 text-slate-500 text-lg leading-relaxed mb-5'>Vous avez déjà un compte? 
-               <button className='text-darkblue' onClick={()=>setshowModalSeconnecter(!showModal)}>
+               <button className='text-darkblue' onClick={identifier}>
                 s'identifier
                </button> 
             </p>

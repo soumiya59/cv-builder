@@ -4,8 +4,9 @@ export default function SeConnecter(showModal) {
   const [close, setClose] = useState(showModal);
   function stateModal(){ setClose(!close)}
   const [showModalsinscrire, setshowModalsinscrire] = useState(false);
-  function statemodalsinscrire(){ setshowModalsinscrire(!showModalsinscrire)
-  setClose(false)
+  function statemodalsinscrire(){ 
+    setshowModalsinscrire(!showModalsinscrire)
+    setClose(false)
   }
   return (
     <>
@@ -54,7 +55,7 @@ export default function SeConnecter(showModal) {
         </>
       ) : null}
       
-      {showModalsinscrire? <SinscrireModal showModalsinscrire={showModalsinscrire}  />:null}
+      {showModalsinscrire && <SinscrireModal showModalsinscrire={showModalsinscrire}/>}
     </>
   );
 }

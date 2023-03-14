@@ -1,13 +1,15 @@
 import React from "react";
 import CreerCompteFrom from "../components/CreerCompteForm";
 import SeConnecter from "./SeConnecte";
-export default function Modal({setShowModal}) {
+export default function Modal({setShowModal,showModal}) {
 const [showModalSeconnecter, setshowModalSeconnecter] = React.useState(false);
     const showSeconnecterModal=()=>{ 
       setshowModalSeconnecter(!showModalSeconnecter)
     }
   return (
     <>
+      {showModalSeconnecter? '' :
+        <> 
         <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none "
           >
@@ -21,7 +23,7 @@ const [showModalSeconnecter, setshowModalSeconnecter] = React.useState(false);
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none opacity-40"
-                    onClick={() =>setShowModal(false)}
+                    onClick={() =>setShowModal(!showModal)}
                   > <span className="bg-transparent text-black  h-6 w-6 text-2xl block outline-none focus:outline-none -mr-5"> X </span>
                   </button>
                 </div>
@@ -33,8 +35,9 @@ const [showModalSeconnecter, setshowModalSeconnecter] = React.useState(false);
               </div>
             </div>
           </div>
-        <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        {showModalSeconnecter && <SeConnecter showModal={showSeconnecterModal}/>}
+         </>
+      } 
+      {showModalSeconnecter && <SeConnecter showModal={showSeconnecterModal}/>}
     </>
       
   );
