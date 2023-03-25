@@ -1,69 +1,100 @@
-import React, { useEffect } from "react"
-import { Field,Formik,Form, useFormikContext } from "formik";
+import React from "react"
+import { Field,Formik,Form, useFormikContext, ErrorMessage  } from "formik";
 import { setExp } from "../../cvSlice";
 import { useDispatch } from "react-redux";
+import tw from "twin.macro";
 
-export default function Education(){
-  const [close,setClose]= React.useState(false)
+const MORE = tw.button`w-full my-4 rounded-full bg-verylightblue text-darkblue  border-mediumblue border-2 p-2`
+const REMOVE = tw.button`bg-mediumblue text-white px-2 rounded-full`
+
+function ExpFields({ name, values, errors, touched, onChange, onBlur }) {
+  return (
+    <div>
+      <label htmlFor={`${name}.pos`}>Postion</label>
+      <Field type="text" name={`${name}.pos`} />
+      <ErrorMessage name={`${name}.pos`} />
+      <br />
+
+      <label htmlFor={`${name}.loc`}>Location</label>
+      <Field type="text" name={`${name}.loc`} />
+      <ErrorMessage name={`${name}.loc`} />
+      <br />
+
+      <label htmlFor={`${name}.dateD`}>date debut</label>
+      <Field type="text" name={`${name}.dateD`} />
+      <ErrorMessage name={`${name}.dateD`} />
+      <br />
+      
+      <label htmlFor={`${name}.dateF`}>deta fin</label>
+      <Field type="text" name={`${name}.dateF`} />
+      <ErrorMessage name={`${name}.dateF`} />
+      <br />
+
+      <label htmlFor={`${name}.desc`}>description</label>
+      <Field as='textarea' type="text" name={`${name}.desc`} />
+      <ErrorMessage name={`${name}.desc`} />
+    </div>
+  );
+  }
+
+export default function ExpForm() {
   const dispatch=useDispatch()
-  const FormObserver = () => {
-    const { values }: any= useFormikContext();  
-    useEffect(() => {
-        dispatch(setExp(values))
-    }, [values]);  
-    return null;
+  const initialValues = {
+    exps: [{ pos: '', loc: '', dateD: '',dateF:'',desc:'' }],
   };
-    return(
-        <>
-            {
-            close? null :
-            <>
-                <Formik
-                 initialValues={{
-                    pos:'',
-                    location:'',
-                    dateD:'',
-                    dateF:'',
-                    workDesc:''
-                  }}
-                  onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 500));
-                    alert(JSON.stringify(values, null, 2));
-                  }}
-                >
-                <Form className="">
-                  <button onClick={()=>setClose(!close)} className=" text-white bg-sky-200 rounded-full px-2 flex ml-auto mt-4">X</button>
-  
-                  <div className="grid grid-cols-2">
-                  <label className="col-span-2 mb-4">Position de travail: <br />
-                  <Field name="pos" className='border-2'/>
-                  </label>
-  
-                  <label className="mb-4">Location: <br />
-                  <Field name="location" className='border-2'  /> 
-                  </label>
-  
-                  <label>Company: <br />
-                  <Field name="Company" className='border-2'  /> 
-                  </label>
-  
-                  <label className="mb-4">Date de début: <br />
-                  <Field name="dateD" className='border-2'  /> 
-                  </label>
-  
-                  <label>Date de fin: <br />
-                  <Field name="dateF" className='border-2'  /> 
-                  </label>
-
-                  <p className="">Description:</p>
-                  <Field as="textarea" name="workDesc" cols='50' rows='3' className='text-lg p-2 col-span-2'></Field>
-                  </div>
-                  <FormObserver />
-                </Form>
-                </Formik>
-            </>
+  const handleSubmit = (values) => {
+    console.log(values);
+  };
+  const AutoSubmitToken = () => {
+   const { values } = useFormikContext();
+   React.useEffect(() => {
+      dispatch(setExp(values))
+      console.log(values);
+   }, [values ]);
+   return null;
+ };
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+    >
+      {({ values, errors, touched, handleChange, handleBlur ,setFieldValue}) => (
+        <Form>
+          {values.exps.map((exp, index) => (
+            <div key={index}>
+              <ExpFields
+                name={`exps[${index}]`}
+                values={exp}
+                errors={errors}
+                touched={touched}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {index > 0 && (
+                <REMOVE
+                  type="button"
+                  onClick={() =>
+                    setFieldValue(
+                      `exps`,
+                      values.exps.filter((_, i) => i !== index)
+                    )
+                  }
+                > X </REMOVE>
+              )}
+            </div>
+          ))}
+            <MORE type="button" 
+            onClick={() =>
+              setFieldValue('exps', [
+                ...values.exps,
+                { pos: '', loc: '', dateD: '',dateF:'',desc:'' }
+              ])
             }
-        </>
-
-    )
+            >Ajouter Autres Experience</MORE>
+          {/* <button type="submit">Submit</button> */}
+          <AutoSubmitToken />
+        </Form>
+      )}
+    </Formik>
+  );
 }

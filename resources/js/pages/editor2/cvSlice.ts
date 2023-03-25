@@ -1,19 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { nanoid } from 'nanoid'
 
 const initialState =[
-    {id:"perso"},
-    {id:"edu"},
+    {id:"perso", data:[{},{}]},
+    {id:"edu" , data:[]},
     {id:"exp"}
 ]
-interface perso{
-    photo:string,
-    nom:string,
-    prenom:string,
-    tele:string,
-    email:string,
-    profile:string,
-}
 const cvslice = createSlice({
    name:'users',
    initialState,
@@ -30,19 +21,12 @@ const cvslice = createSlice({
     },
     setEdu:(state,action)=>{
         const toupdate : any = state.find((cv)=>cv.id==='edu')
-        toupdate.institution = action.payload.institution
-        toupdate.dateD = action.payload.dateD
-        toupdate.dateF = action.payload.dateF
-        toupdate.eduDesc = action.payload.eduDesc
+        toupdate.data = action.payload
         console.log(toupdate)
     },
     setExp:(state,action)=>{
         const toupdate : any = state.find((cv)=>cv.id==='exp')
-        toupdate.pos = action.payload.pos
-        toupdate.location = action.payload.location
-        toupdate.dateD = action.payload.dateD
-        toupdate.dateF = action.payload.dateF
-        toupdate.workDesc = action.payload.workDesc
+        toupdate.data = action.payload
         console.log(toupdate)
     },
    }

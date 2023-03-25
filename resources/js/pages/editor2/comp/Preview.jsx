@@ -2,13 +2,14 @@ import React from "react";
 import {useSelector} from 'react-redux'
 import tw from "twin.macro";
 const HEADER = tw.p`text-xl font-semibold my-5`
+
 export default function Preview(){
   const cv = useSelector(state=>state.cv)
   const perso = cv.find((cv)=>cv.id==='perso')
   const edu = cv.find((cv)=>cv.id==='edu')
   const exp = cv.find((cv)=>cv.id==='exp')
 
-  console.log('preview: ', edu)
+  console.log('preview: ', exp)
     return (
         <div className=" p-10  ">
           <HEADER>Personal Information</HEADER>
@@ -24,24 +25,31 @@ export default function Preview(){
           }
           <HEADER>Education</HEADER>
           {
-            edu &&
-            <p>
-              institution: {edu.institution} <br />
-              date debut: {edu.dateD} <br />
-              date fin: {edu.dateF} <br /> 
-              description: {edu.eduDesc}  <br />
+            edu?.data?.educations && edu?.data?.educations?.map((e)=>{
+              return(
+            <p key={e}>
+              institution: {e.institution} <br />
+              date debut: {e.dateD} <br />
+              date fin: {e.dateF} <br />
+              description: {e.desc}  <br />
             </p>
+
+              )
+            })
           }
           <HEADER>Experience</HEADER>
           {
-            exp &&
-            <p>
-              position: {exp.pos} <br />
-              location: {exp.location} <br />
-              date debut: {exp.dateD} <br />
-              date fin: {exp.dateF} <br />
-              description: {exp.workDesc}  <br />
+            exp?.data?.exps && exp?.data?.exps?.map((e)=>{
+              return(
+            <p key={e}>
+              position: {e.pos} <br />
+              location: {e.loc} <br />
+              date debut: {e.dateD} <br />
+              date fin: {e.dateF} <br />
+              description: {e.desc}  <br />
             </p>
+              )
+            })
           }
         </div>
     )

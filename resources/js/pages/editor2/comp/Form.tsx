@@ -1,23 +1,15 @@
 import React, { useEffect } from "react";
 import tw from "twin.macro";
 import { Formik, Field, Form, useFormikContext } from "formik";
-import Education from "./form-comp/Education";
+import EducationForm from './form-comp/Education'
 import Experience from "./form-comp/Experience";
-import { cloneElement } from 'react';
 import { setperso } from "../cvSlice";
 import { useDispatch } from "react-redux";
 
 const MORE = tw.button`w-full my-4 rounded-full bg-verylightblue text-darkblue  border-mediumblue border-2 p-2`
 
 export default function Formulaire(){
-  const [displayEdu,setdisplayEdu] = React.useState(false)
-  const [displayExp,setdisplayExp] = React.useState(false)
-  const cloneEDu = cloneElement(<Education/>)
-  const cloneExp= cloneElement(<Experience/>)
   const dispatch=useDispatch()
-
-//   const handleChange = (e)=>{setperso((prev)=>({...prev,perso:{perso}})) }
-
   const FormObserver = () => {
     const { values }: any= useFormikContext();  
     useEffect(() => {
@@ -25,7 +17,14 @@ export default function Formulaire(){
     }, [values]);  
     return null;
   };
-  
+
+  const hiddenFileInput = React.useRef<HTMLInputElement>(null);
+  const handleClick = event => {
+    hiddenFileInput.current?.click();
+  };  
+  const handleChange = event => {
+    const fileUploaded = event.target.files[0];
+  };
   return (
     <div className=" bg-pink-50 w-1/2 p-10">
       <Formik
@@ -42,7 +41,13 @@ export default function Formulaire(){
         <Form>
             <p className="text-xl mb-5 font-semibold">Personal Information</p>
             <div className=" grid  grid-cols-3 grid-rows-2">
-                <Field type="file" name="photo" className='row-span-2 border-2'/>
+                <div>
+                  <button onClick={handleClick}>
+                    Upload a file
+                  </button>
+                  <input type="file" ref={hiddenFileInput} onChange={handleChange} style={{display:'none'}}className='row-span-2 border-2' name="photo"/> 
+                </div>
+                {/* <Field type="file" name="photo" className='row-span-2 border-2'/> */}
                 <label>nom <br />
                 <Field name="nom" className='border-2'/>
                 </label>
@@ -66,16 +71,12 @@ export default function Formulaire(){
             
         <div id="education">
             <p className="text-xl my-5 font-semibold">Education</p>
-            <Education/>
-            {displayEdu && cloneEDu}
-            <MORE type="button" onClick={()=>setdisplayEdu(true)}>Ajouter Autres Études</MORE>
+            <EducationForm />
         </div>
         
         <div id="experience">
             <p className="text-xl my-5 font-semibold">L'expérience professionnelle</p>
             <Experience/>
-            {displayExp && cloneExp}
-            <MORE type="button" onClick={()=>setdisplayExp(true)}>Ajouter plus d'expérience</MORE>
         </div>
 
     </div>
