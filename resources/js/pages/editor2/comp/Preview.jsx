@@ -8,14 +8,18 @@ export default function Preview(){
   const perso = cv.find((cv)=>cv.id==='perso')
   const edu = cv.find((cv)=>cv.id==='edu')
   const exp = cv.find((cv)=>cv.id==='exp')
+  
+  
 
-  console.log('preview: ', exp)
+  // console.log('preview: ', perso)
     return (
         <div className=" p-10  ">
           <HEADER>Personal Information</HEADER>
           {
             perso &&
             <p>
+              {/* nom: {perso.image}  <br /> */}
+              <img src={perso.image} alt="Selected image" className="w-32 h-32"/>
               nom: {perso.nom}  <br />
               prenom: {perso.prenom} <br />
               tele: {perso.tele}  <br />

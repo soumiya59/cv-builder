@@ -11,23 +11,20 @@ const cvslice = createSlice({
    reducers:{
     setperso:(state,action)=>{
         const toupdate : any = state.find((cv)=>cv.id==='perso')
-        toupdate.photo = action.payload.photo
+        toupdate.image = action.payload.image
         toupdate.nom = action.payload.nom
         toupdate.prenom = action.payload.prenom
         toupdate.tele = action.payload.tele
         toupdate.email = action.payload.email
         toupdate.profile = action.payload.profile
-        console.log(toupdate)
     },
     setEdu:(state,action)=>{
         const toupdate : any = state.find((cv)=>cv.id==='edu')
         toupdate.data = action.payload
-        console.log(toupdate)
     },
     setExp:(state,action)=>{
         const toupdate : any = state.find((cv)=>cv.id==='exp')
         toupdate.data = action.payload
-        console.log(toupdate)
     },
    }
 })

@@ -38,13 +38,13 @@ export default function EducationForm() {
     educations: [{ institution: '', dateD: '',dateF:'', desc: '' }],
   };
   const handleSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
   };
   const AutoSubmitToken = () => {
    const { values } = useFormikContext();
    React.useEffect(() => {
       dispatch(setEdu(values))
-      console.log(values);
+      // console.log(values);
    }, [values ]);
    return null;
  };

@@ -43,13 +43,13 @@ export default function ExpForm() {
     exps: [{ pos: '', loc: '', dateD: '',dateF:'',desc:'' }],
   };
   const handleSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
   };
   const AutoSubmitToken = () => {
    const { values } = useFormikContext();
    React.useEffect(() => {
       dispatch(setExp(values))
-      console.log(values);
+      // console.log(values);
    }, [values ]);
    return null;
  };

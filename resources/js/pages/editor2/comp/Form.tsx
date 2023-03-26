@@ -18,18 +18,11 @@ export default function Formulaire(){
     return null;
   };
 
-  const hiddenFileInput = React.useRef<HTMLInputElement>(null);
-  const handleClick = event => {
-    hiddenFileInput.current?.click();
-  };  
-  const handleChange = event => {
-    const fileUploaded = event.target.files[0];
-  };
   return (
     <div className=" bg-pink-50 w-1/2 p-10">
       <Formik
         initialValues={{
-          photo:'',
+          image:'',
           nom: '',
           prenom: '',
           tele: '',
@@ -38,16 +31,25 @@ export default function Formulaire(){
         }}
         onSubmit={()=>console.log("submit")}
       >
+        {({ values, handleSubmit, setFieldValue }) => (
         <Form>
             <p className="text-xl mb-5 font-semibold">Personal Information</p>
             <div className=" grid  grid-cols-3 grid-rows-2">
-                <div>
-                  <button onClick={handleClick}>
-                    Upload a file
-                  </button>
-                  <input type="file" ref={hiddenFileInput} onChange={handleChange} style={{display:'none'}}className='row-span-2 border-2' name="photo"/> 
+              <div>
+                <Field
+                name="photo"
+                type="file"
+                      onChange={(e) => {
+                      const fileReader = new FileReader();
+                      fileReader.onload = () => {
+                        if (fileReader.readyState === 2) {
+                          setFieldValue('image', fileReader.result);
+                        }
+                      };
+                      fileReader.readAsDataURL(e.target.files[0]);
+                    }}
+                />
                 </div>
-                {/* <Field type="file" name="photo" className='row-span-2 border-2'/> */}
                 <label>nom <br />
                 <Field name="nom" className='border-2'/>
                 </label>
@@ -67,6 +69,7 @@ export default function Formulaire(){
             </div>
             <FormObserver />
         </Form>
+          )}
       </Formik>
             
         <div id="education">
