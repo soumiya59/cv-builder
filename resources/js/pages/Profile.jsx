@@ -66,8 +66,8 @@ function Profile(){
                 )} 
             </div> 
             <div className="grid place-items-center mt-20">
-                    <button id="btn-creastion" className="py-2 px-4 text-center text-white rounded-3xl bg-darkpink hover:opacity-90">
-                            <p className="font-Montserrat   text-3xl">créer nouveau cv</p>
+                    <button id="btn-creastion" className="inline-block px-8 py-2 mt-8 mb-16 md:mb-24 text-2xl text-white rounded-full bg-darkpink hover:opacity-90">
+                            <p className="font-Montserrat ">créer nouveau cv</p>
                     </button>
             </div>
         </div>
