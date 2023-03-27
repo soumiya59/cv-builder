@@ -1,6 +1,5 @@
 import Home from './pages/Home';
 import Modeles from './pages/Modeles';
-// import Editeur from './pages/editor/Editeur'
 import Editeur from "./pages/editor2/Editeur";
 import Telecharger from './pages/Telecharger'
 import Profile from '../js/pages/Profile'
@@ -21,8 +20,7 @@ ReactDOM.createRoot(document.getElementById('app')).render(
                 <Route path="/telecharger" element={<Telecharger  />} />
                 <Route path="/MonCompte" element={<MonCompt  />} />
                 <Route path="/About" element={<Abuot />} />
-                {/* <Route path="/editeur" element={<Editeur />} /> */}
-                <Route path="/editor2" element={<Editeur />} />
+                <Route path="/editeur" element={<Editeur />} />
           </Routes>
       </Router> 
     
