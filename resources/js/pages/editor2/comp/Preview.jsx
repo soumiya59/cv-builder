@@ -1,5 +1,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux'
+import { Link } from 'react-router-dom';
 
 const Resume = () => {
   const cv = useSelector(state=>state.cv)
@@ -8,10 +9,10 @@ const Resume = () => {
   const exp = cv.find((cv)=>cv.id==='exp')
   const skills = cv.find((cv)=>cv.id==='skills')
   const langs = cv.find((cv)=>cv.id==='langs')
-  
+
   return (
-    <div className="mx-auto w-11/12 md:w-3/4 lg:w-3/4 xl:w-2/3 mt-5">
-      <div className='bg-white p-10 rounded-lg pb-16'>
+    <div className=" mt-5 relative">
+      <div className='mx-auto w-11/12 md:w-3/4 lg:w-3/4 xl:w-2/3 bg-white p-10 rounded-lg pb-16'>
       {
        perso.nom || perso.prenom || perso.image || perso.tele || perso.email || perso.profile?
        <>
@@ -143,6 +144,9 @@ const Resume = () => {
             </>
       }
       </div>
+      <Link to='/telecharger' className='absolute top-0 right-5'>
+      <button className='text-lg float-right bg-mediumblue text-white px-3 py-1 rounded-2xl'>Telecharger</button>
+      </Link>
     </div>
   )}
 export default Resume;
