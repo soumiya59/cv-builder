@@ -11,22 +11,25 @@ import Home from './pages/Home';
 import MonCompt from './pages/MonCompte';
 import Abuot from './pages/Abuot';
 import Cvzohayr1 from './pages/CVs/Cvzohayr1';
+import { ContextProvider } from './context/ContextProvider';
 
 
 ReactDOM.createRoot(document.getElementById('app')).render(    
     
     <div>
-        {/* <Router> */}
-        <Cvzohayr1 />
+            <ContextProvider>
+        <Router>
+       {/*  <Cvzohayr1 /> */}
         {/* <Home />  */}
-       {/*  <Routes>
+        <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/modeles" element={<Modeles  />} />
               <Route path="/telecharger" element={<Telecharger  />} />
               <Route path="/MonCompte" element={<MonCompt  />} />
-              <Route path="/About" element={<Abuot />} />
+              {/* <Route path="/About" element={<Abuot />} /> */}
         </Routes>
-    </Router>  */}
+    </Router> 
+    </ContextProvider>
      </div>
 );

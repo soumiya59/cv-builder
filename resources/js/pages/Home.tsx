@@ -6,6 +6,8 @@ import Carousel from './components/Carousel'
 import Statistic from './components/Statistic'
 import Footer from './components/Footer'
 import SeConnecter from './modals/SeConnecte'
+import { useStateContext } from "../context/ContextProvider";
+
 
 const IMG = tw.img` xl:w-2/12 lg:w-1/5 w-1/4  mx-auto justify-around h-44 md:h-60 xl:h-64 rounded-2xl `
 const STEPS = tw.div` flex flex-wrap container mx-auto mt-14 px-3 `
@@ -17,6 +19,9 @@ const CARD = tw.div`flex items-center `
 const ICON = tw.img` max-h-32  md:pr-5`
 
 export default function Home() {
+   const {user} = useStateContext() 
+   console.log(user)
+
 const [showModalSeconnecter, setshowModalSeconnecter] = useState(false);
 function statemodaltelecharger(){ setshowModalSeconnecter(!showModalSeconnecter)}
 return (
