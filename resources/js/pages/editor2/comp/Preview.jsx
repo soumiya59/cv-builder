@@ -11,23 +11,22 @@ function App() {
   const skills = cv.find((cv)=>cv.id==='skills')
   const langs = cv.find((cv)=>cv.id==='langs')
 	const reportTemplateRef = useRef(null);
-
+  // saving cv to localSorage
+  const myCV = JSON.stringify([cv])
+  localStorage.setItem("localCV",myCV);
+  // downloading cv to PDF
 	const handleGeneratePdf = () => {
 		const doc = new jsPDF({
 			format: 'a3',
 			unit: 'pt',
 		});
-
-		// Adding the fonts.
 		doc.setFont('Inter-Regular', 'normal');
-
 		doc.html(reportTemplateRef.current, {
 			async callback(doc) {
 				await doc.save('CV');
 			},
 		});
 	};
-
 
 	return (
 		<div>
