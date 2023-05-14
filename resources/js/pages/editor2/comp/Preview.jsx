@@ -1,19 +1,49 @@
-import React from 'react';
+import { useRef } from 'react';
+import jsPDF from 'jspdf';
 import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
 
-const Resume = () => {
+function App() {
   const cv = useSelector(state=>state.cv)
   const perso = cv.find((cv)=>cv.id==='perso')
   const edu = cv.find((cv)=>cv.id==='edu')
   const exp = cv.find((cv)=>cv.id==='exp')
   const skills = cv.find((cv)=>cv.id==='skills')
   const langs = cv.find((cv)=>cv.id==='langs')
+	const reportTemplateRef = useRef(null);
 
-  return (
-    <div className=" mt-5 relative">
-      <div className='mx-auto w-11/12 md:w-3/4 lg:w-3/4 xl:w-2/3 bg-white p-10 rounded-lg pb-16'>
-      {
+	const handleGeneratePdf = () => {
+		const doc = new jsPDF({
+			format: 'a3',
+			unit: 'pt',
+		});
+
+		// Adding the fonts.
+		doc.setFont('Inter-Regular', 'normal');
+
+		doc.html(reportTemplateRef.current, {
+			async callback(doc) {
+				await doc.save('CV');
+			},
+		});
+	};
+
+
+	return (
+		<div>
+      <div className='flex text-lg text-white'>
+        <button className=" bg-mediumblue px-3 py-1 rounded-2xl flex ml-auto mt-2" onClick={handleGeneratePdf}>
+          Télécharger
+        </button>
+  
+        <Link to='/modeles' >
+        <button className='bg-mediumblue px-3 py-1 rounded-2xl flex mt-2 mx-2'>changer </button>
+        </Link>
+      </div>
+
+			<div className=" relative mx-16 mt-2">
+       <div ref={reportTemplateRef} className=' bg-white rounded-lg p-8 text-sm' >
+       {
        perso.nom || perso.prenom || perso.image || perso.tele || perso.email || perso.profile?
        <>
        <div className='flex'>
@@ -39,8 +69,8 @@ const Resume = () => {
        <p className='mt-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, nisi necessitatibus Lorem ipsum dolor sit amet.</p>
        </>
       }
-      <p className="text-xl font-bold mb-2 mt-6">Skills</p>
-      {
+       <p className="text-xl font-bold mb-2 mt-6">Skills</p>
+       {
           skills.data?.skills[0].compétence!=="" ? 
 
             <ul className="list-disc list-inside">             
@@ -144,12 +174,11 @@ const Resume = () => {
             </>
       }
       </div>
-      <Link to='/telecharger' className='absolute top-0 right-5'>
-      <button className='text-lg float-right bg-mediumblue text-white px-3 py-1 rounded-2xl'>Telecharger</button>
-      </Link>
-      <Link to='/modeles' className='absolute top-10 right-5'>
-      <button className='text-lg float-right bg-mediumblue text-white px-3 py-1 rounded-2xl'>changer </button>
-      </Link>
-    </div>
-  )}
-export default Resume;
+      </div>
+
+			</div>
+      
+	);
+}
+
+export default App;
