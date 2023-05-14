@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
-
+import { Link, redirect } from "react-router-dom";
+import axiosClient from "../../axiosClient";
+import { useStateContext } from "../../context/ContextProvider";
 export default function LogOutHeader() {
+  const {setUser , setToken} = useStateContext()
+  const onLogout = ev => {
+    ev.preventDefault()
+    axiosClient.post('/logout')
+      .then(() => {
+        setUser({})
+        setToken(null)
+        
+      })
+      redirect("/")
+  }
   const [isOpen, setIsOpen] = useState(false);
   return (
       <nav>
@@ -19,9 +31,12 @@ export default function LogOutHeader() {
                   <p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
                     <Link to='/monCompte'> Mon Compte </Link>
                   </p>
-                  <button className="p-3 text-white rounded-3xl bg-darkpink hover:opacity-90">
-                    <Link to='/'> Se déconnecter </Link>
-                  </button>
+                  <form onSubmit={onLogout} >
+              <button type='submit' className="p-3 text-white rounded-3xl bg-darkpink hover:opacity-90">
+              
+                <span className="flex-1 ml-3 whitespace-nowrap">déconnecter</span>
+              </button></form>
+                 
               </div>
             </div>
             <div className="flex justify-end flex-auto -mr-2 md:hidden">

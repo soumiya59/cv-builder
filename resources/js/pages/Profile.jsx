@@ -1,10 +1,11 @@
 import { useState } from "react";
-import Modal from "./modals/SeConnecte";
+import { useStateContext } from "../context/ContextProvider";
 import LogOutHeader from './components/LogOutHeader'
 import MiniFooter from "./components/MiniFooter";
 import TelechargerModal from "./modals/TelechargerModal";
 import SupprimerModal from "./modals/SupprimerModal";
 import Partager from "./modals/Partager";
+import { Navigate } from "react-router-dom";
 function Profile(){
     const [showModalTelecherger, setshowModalTelecherger] = useState(false);
     const [showModalSupprimer, setshowModalSupprimer] = useState(false);
@@ -12,13 +13,17 @@ function Profile(){
     function statemodaltelecharger(){ setshowModalTelecherger(!showModalTelecherger)}
     function statemodalsupprimer(){ setshowModalSupprimer(!showModalSupprimer)}
     function statemodalPartager(){ setshowModalPartager(!showModalPartager)}
-    
+    const { token} = useStateContext();
+    if(!token){
+        return <Navigate to={"/login"} />
+    }
     const Cvs=[{
                 edition :'Dérnier édition : 16/01/2023 ',
             },
             {
                 edition :'Dérnier édition : 16/01/2023 ',  
             }]
+          
     return (
         <div>
             <LogOutHeader />

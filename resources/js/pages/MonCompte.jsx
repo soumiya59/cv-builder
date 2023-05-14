@@ -1,7 +1,23 @@
-import React from "react";
+import { useNavigate , Navigate } from "react-router-dom";
 import LogOutHeader from "./components/LogOutHeader";
 import MiniFooter from "./components/MiniFooter";
+
+import { useStateContext } from "../context/ContextProvider";
+
+
 export default function MonCompt(){
+    const { user, token, setUser, setToken, notification } = useStateContext();
+    const navigat = useNavigate()
+    if(!token){
+        return <Navigate to={"/login"} />
+    }
+
+
+    
+ 
+
+
+    
     return(
         <>
             <LogOutHeader />

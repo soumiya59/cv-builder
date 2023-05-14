@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import SinscrireModal from "./SinscrireModal";
-import axiosClient from "../../axiosClient";
-import { useStateContext } from "../../context/ContextProvider";
+import axiosClient from "../axiosClient";
+import { useStateContext } from "../context/ContextProvider";
+import { useNavigate } from "react-router";
 export default function SeConnecter(showModal) {
 
   const [close, setClose] = useState(showModal);
-
+  const navigate=useNavigate()
   function stateModal() {
     setClose(!close)
+    navigate('/')
   }
   const [showModalsinscrire, setshowModalsinscrire] = useState(false);
   function statemodalsinscrire(){ setshowModalsinscrire(!showModalsinscrire)
   setClose(false)
+
   }
 
   const [email, setEmail] = useState("")
@@ -42,17 +44,20 @@ export default function SeConnecter(showModal) {
   return (
     <>
 
-      {close ? (
+      
         <>
           <div className="flex flex-col items-center justify-center px-4 py-4 mx-auto md:h-screen lg:py-0 overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none" >
          
       <div className="w-full bg-white rounded-lg shadow border  md:mt-0 md:w-2/6 sm:w-3/6 xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8 ">
           <div className="relative">
+     
                   <button
                     className="bg-white rounded-md p-2 absolute top-0 right-0   text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                     type="button"
-                    onClick={() => stateModal()}>
+                    onClick={()=>{stateModal()}}
+                  >
+                    
                     <span className="sr-only">Close menu</span>
                     <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -86,9 +91,7 @@ export default function SeConnecter(showModal) {
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
-      ) : null}
-      
-      {showModalsinscrire? <SinscrireModal showModalsinscrire={showModalsinscrire}  />:null}
+     
     </>
   );
 }
