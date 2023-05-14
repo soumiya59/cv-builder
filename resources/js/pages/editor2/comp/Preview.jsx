@@ -16,14 +16,14 @@ const Resume = () => {
       {
        perso.nom || perso.prenom || perso.image || perso.tele || perso.email || perso.profile?
        <>
-       <section className='flex'>
+       <div className='flex'>
         <img src={perso.image} alt="Selected image" className="w-24 h-24 rounded-lg mr-5"/>
         <div>
-          <h1 className="text-3xl font-bold ">{perso.prenom}{perso.nom}</h1>
+          <h1 className="text-3xl font-bold ">{perso.prenom} {perso.nom}</h1>
           <p>{perso.email}</p>
           <p>{perso.tele}</p>
         </div>
-       </section>
+       </div>
        <p className='mt-5'>{perso.profile}</p>
        </>
        :
@@ -146,6 +146,9 @@ const Resume = () => {
       </div>
       <Link to='/telecharger' className='absolute top-0 right-5'>
       <button className='text-lg float-right bg-mediumblue text-white px-3 py-1 rounded-2xl'>Telecharger</button>
+      </Link>
+      <Link to='/modeles' className='absolute top-10 right-5'>
+      <button className='text-lg float-right bg-mediumblue text-white px-3 py-1 rounded-2xl'>changer </button>
       </Link>
     </div>
   )}
