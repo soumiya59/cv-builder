@@ -1,6 +1,6 @@
 import React from "react"
 import { Field,Formik,Form, useFormikContext, ErrorMessage  } from "formik";
-import { setExp } from "../../cvSlice";
+import { setExp } from "../../slices/expSlice";
 import { useDispatch } from "react-redux";
 import tw from "twin.macro";
 
@@ -25,13 +25,13 @@ function ExpFields({ name, values, errors, touched, onChange, onBlur ,styles}) {
 
       <label htmlFor={`${name}.dateD`} className=''>
         <LABEL> Date Debut : </LABEL>
-        <Field type="text" name={`${name}.dateD`} className={styles.fieldStyle}/>
+        <Field type="date" name={`${name}.dateD`} className={styles.fieldStyle}/>
         <ErrorMessage name={`${name}.dateD`} />
       </label>
       
       <label htmlFor={`${name}.dateF`}>
        <LABEL> Date Fin : </LABEL>
-      <Field type="text" name={`${name}.dateF`} className={styles.fieldStyle}/>
+      <Field type="date" name={`${name}.dateF`} className={styles.fieldStyle}/>
       <ErrorMessage name={`${name}.dateF`} />
       </label>
 
