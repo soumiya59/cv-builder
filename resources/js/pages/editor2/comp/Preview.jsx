@@ -4,16 +4,17 @@ import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
 
 function App() {
-  const cv = useSelector(state=>state.cv)
-  const perso = cv.find((cv)=>cv.id==='perso')
-  const edu = cv.find((cv)=>cv.id==='edu')
-  const exp = cv.find((cv)=>cv.id==='exp')
-  const skills = cv.find((cv)=>cv.id==='skills')
-  const langs = cv.find((cv)=>cv.id==='langs')
+  const perso = useSelector(state=>state.perso)
+  const edu = useSelector(state=>state.edu)
+  const exp = useSelector(state=>state.exp)
+  const skills = useSelector(state=>state.skills)
+  const langs = useSelector(state=>state.lang)
 	const reportTemplateRef = useRef(null);
+
   // saving cv to localSorage
-  const myCV = JSON.stringify([cv])
-  localStorage.setItem("localCV",myCV);
+  // const myCV = JSON.stringify([cv])
+  // localStorage.setItem("localCV",myCV);
+
   // downloading cv to PDF
 	const handleGeneratePdf = () => {
 		const doc = new jsPDF({
@@ -73,9 +74,9 @@ function App() {
           skills.data?.skills[0].compétence!=="" ? 
 
             <ul className="list-disc list-inside">             
-            {skills.data?.skills.map((e)=>{
+            {skills.data?.skills.map((e,i)=>{
               return(
-              <li key={e}> {e.compétence} </li>
+              <li key={i}> {e.compétence} </li>
               )
             })}
             </ul>
@@ -95,9 +96,9 @@ function App() {
           exp?.data?.exps[0].loc!=="" || exp?.data?.exps[0].dateD!=="" ||  exp?.data?.exps[0].dateF!=="" || exp?.data?.exps[0].desc!=="" ?
             <div>
               {
-            exp?.data?.exps?.map((e)=>{
+            exp?.data?.exps?.map((e,i)=>{
               return(
-                <div className="mt-6" key={e}>
+                <div className="mt-6" key={i}>
                   <div className="mb-2 flex justify-between">
                     <p className="text-lg font-bold">{e.pos}</p>
                     <p className="text-md mb-1">{e.dateD} - {e.dateF}</p>
@@ -134,9 +135,9 @@ function App() {
             edu?.data?.educations[0].desc!=="" 
             ?
 
-            edu?.data?.educations?.map((e)=>{
+            edu?.data?.educations?.map((e,i)=>{
             return(
-            <div key={e}>
+            <div key={i}>
                   <div className="mb-2 flex justify-between">
                     <p className="text-lg font-bold">{e.institution}</p>
                     <p className="text-md mb-1">{e.dateD} - {e.dateF}</p>
@@ -159,9 +160,9 @@ function App() {
             langs?.data?.langs[0].lang || langs?.data?.level
             ?
             
-            langs?.data?.langs?.map((e)=>{
+            langs?.data?.langs?.map((e,i)=>{
               return(
-            <p key={e}>
+            <p key={i}>
                {e.lang} - {e.level}
             </p>
               )

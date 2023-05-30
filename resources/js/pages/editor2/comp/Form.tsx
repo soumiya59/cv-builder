@@ -5,7 +5,8 @@ import EducationForm from './form-comp/Education'
 import Experience from "./form-comp/Experience";
 import Skills from "./form-comp/Skills";
 import Lang from "./form-comp/Lang";
-import { setperso } from "../cvSlice";
+// import { setperso } from "../cvSlice";
+import { setperso } from "../slices/persoSlice";
 import { useDispatch } from "react-redux";
 import '../../../../css/editor.css'
 const HEADER = tw.p`text-2xl text-gray-600 font-bold mt-5 pb-1 mb-5 border-b-2 border-dashed border-verylightblue flex  `
