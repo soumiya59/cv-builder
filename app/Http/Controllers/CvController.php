@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Competence;
-use App\Models\User;
+use App\Models\Cv;
 use Illuminate\Http\Request;
 
-class CompetenceController extends Controller
+class CvController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,17 @@ class CompetenceController extends Controller
      */
     public function index()
     {
-        
-        return $posts = User::find("user_id");
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -33,10 +41,21 @@ class CompetenceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Competence  $competence
+     * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function show(Competence $competence)
+    public function show(Cv $cv)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Cv  $cv
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Cv $cv)
     {
         //
     }
@@ -45,10 +64,10 @@ class CompetenceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Competence  $competence
+     * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Competence $competence)
+    public function update(Request $request, Cv $cv)
     {
         //
     }
@@ -56,10 +75,10 @@ class CompetenceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Competence  $competence
+     * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Competence $competence)
+    public function destroy(Cv $cv)
     {
         //
     }

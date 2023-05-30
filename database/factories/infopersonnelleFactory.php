@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Cv;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Infopersonnelle>
  */
@@ -17,7 +18,7 @@ class infopersonnelleFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::inRandomOrder()->first()->id,
+            'cv_id' => Cv::inRandomOrder()->first()->id,
             'nom' => $this->faker->lastName,
             'prenom' => $this->faker->firstName,
             'about' => $this->faker->paragraph,

@@ -12,24 +12,14 @@ use App\Models\Competence;
 use App\Models\Experiencepro;
 use App\Models\Infopersonnelle;
 use App\Models\Language;
+use App\Models\Cv;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    public function educations(){
-        return $this->hasMany(Education::class , "user_id");
+    public function cvs(){
+        return $this->hasMany(Cv::class , "user_id");
     }
-    public function competences(){
-        return $this->hasMany(Competence::class , "user_id");
-    }
-    public function experiencepros(){
-        return $this->hasMany(Experiencepro::class , "user_id");
-    }
-    public function infopersonnelles(){
-        return $this->hasMany(Infopersonnelle::class , "user_id");
-    }
-    public function languages(){
-        return $this->hasMany(Language::class , "user_id");
-    }
+   
     /**
      * The attributes that are mass assignable.
      *

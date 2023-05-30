@@ -20,8 +20,8 @@ return new class extends Migration
             $table->date("dateDebut");
             $table->date("dateFin");
             $table->string("description");
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('cv_id');
+            $table->foreign('cv_id')->references('id')->on('cvs')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
