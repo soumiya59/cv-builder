@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import MiniFooter from './components/MiniFooter'
 import { Link } from 'react-router-dom'
 
-import CreerCompteFrom from './components/CreerCompteForm'
 
 export default function telecharger() {
    
@@ -51,9 +50,6 @@ export default function telecharger() {
             </div>
           </div>
         </section>
-
-
-        
         <MiniFooter />
     </div>
   )

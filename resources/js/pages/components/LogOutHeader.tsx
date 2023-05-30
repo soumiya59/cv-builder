@@ -4,15 +4,10 @@ import { Link, redirect } from "react-router-dom";
 import axiosClient from "../../axiosClient";
 import { useStateContext } from "../../context/ContextProvider";
 export default function LogOutHeader() {
-  const {setUser , setToken} = useStateContext()
+  const {setUser , setToken , logout} = useStateContext()
   const onLogout = ev => {
     ev.preventDefault()
-    axiosClient.post('/logout')
-      .then(() => {
-        setUser({})
-        setToken(null)
-        
-      })
+      logout()
       redirect("/")
   }
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +16,7 @@ export default function LogOutHeader() {
         <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-screen-2xl">
           <div className="flex items-center h-16 mt-3">
               <Link to='/'>
-              <img className="w-40" src="images/logo.svg" alt="logo" />
+              <img className="w-40" src="/images/logo.svg" alt="logo" />
               </Link>
               <div className="hidden ml-auto md:block">
                 <div className="flex items-baseline justify-end ml-10 space-x-4 ">

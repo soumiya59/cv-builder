@@ -1,12 +1,13 @@
 import { createContext, useContext, useState } from "react";
-
+import axios from "axios";
 const StateContext = createContext({
-  currentUser: null,
+  user: null,
   token: null,
   notification: null,
   setUser: () => { },
   setToken: () => { },
-  setNotification: () => { }
+  setNotification: () => { },
+  logout: () => { },
 })
 
 export const ContextProvider = ({ children }) => {
@@ -15,7 +16,7 @@ export const ContextProvider = ({ children }) => {
   const [notification, _setNotification] = useState('');
 
   const setToken = (token) => {
-    console.log(token)
+   
     _setToken(token)
     if (token) {
       localStorage.setItem('ACCESS_TOKEN', token);
@@ -23,6 +24,18 @@ export const ContextProvider = ({ children }) => {
       localStorage.removeItem('ACCESS_TOKEN');
     }
   }
+  const logout = () => {
+    
+    
+    axios.post('/logout',{ token: token })
+    .then(() => {
+      
+      setUser({})
+      _setToken(null)
+      localStorage.removeItem('ACCESS_TOKEN');
+    })
+
+    }
 
   const setNotification = message => {
     _setNotification(message);
@@ -39,7 +52,8 @@ export const ContextProvider = ({ children }) => {
       token,
       setToken,
       notification,
-      setNotification
+      setNotification,
+      logout
     }}>
       {children}
     </StateContext.Provider>

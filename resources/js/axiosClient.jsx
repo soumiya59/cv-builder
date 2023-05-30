@@ -23,7 +23,6 @@ axiosClient.interceptors.response.use(
     } else if (response.status === 404) {
       //Show not found
     }
-
     throw error;
   }
 );

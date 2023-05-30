@@ -10,19 +10,15 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
+    /** 
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return UserResource::collection(User::query()->orderBy('id', 'desc')->paginate(10));
+        return UserResource::collection(User::query()->paginate(10));
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param \App\Http\Requests\StoreUserRequest $request
      * @return \Illuminate\Http\Response
      */
@@ -36,8 +32,6 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
      * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
@@ -47,8 +41,6 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param \App\Http\Requests\UpdateUserRequest $request
      * @param \App\Models\User                     $user
      * @return \Illuminate\Http\Response
@@ -65,8 +57,6 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
