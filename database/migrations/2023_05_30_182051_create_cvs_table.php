@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('education', function (Blueprint $table) {
+        Schema::create('cvs', function (Blueprint $table) {
             $table->id();
-            $table->string("institution");
-            $table->date("dateDebut");
-            $table->date("dateFin");
-            $table->string("description");
-            $table->unsignedBigInteger('cv_id');
-            $table->foreign('cv_id')->references('id')->on('cvs')->onDelete('cascade')->onUpdate('cascade');
+            $table->string("nomcv");
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('education');
+        Schema::dropIfExists('cvs');
     }
 };

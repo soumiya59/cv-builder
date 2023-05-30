@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string("email");
             $table->string("adresse");
             $table->string("tel");
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('cv_id');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cv_id')->references('id')->on('cvs')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

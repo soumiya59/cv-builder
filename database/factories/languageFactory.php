@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Cv;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
 /**
@@ -17,7 +18,7 @@ class languageFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::inRandomOrder()->first()->id,
+            'cv_id' => Cv::inRandomOrder()->first()->id,
             'language' => $this->faker->languageCode,
             'Level' => $this->faker->randomElement(['a1', 'a2', 'b1','b2','b1']),
         ];

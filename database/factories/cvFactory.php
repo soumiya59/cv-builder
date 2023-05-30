@@ -2,14 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Cv;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Competence>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cv>
  */
-class competenceFactory extends Factory
+class cvFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,9 +18,8 @@ class competenceFactory extends Factory
     public function definition()
     {
         return [
-            'competence' => $this->faker->word,
-            'cv_id' => Cv::inRandomOrder()->first()->id,
-            
+            'user_id' => User::inRandomOrder()->first()->id,
+            'nomcv' => fake()->name() 
         ];
     }
 }
