@@ -5,8 +5,8 @@ export default function Abuot() {
   return (
     <div>
       <LogOutHeader />
-            
-      <Footer/>
+
+      <Footer />
     </div>
   )
 }

@@ -1,14 +1,10 @@
 import React,{useState} from 'react'
 import MiniFooter from './components/MiniFooter'
 import { Link } from 'react-router-dom'
-import SeConnecter from './modals/SeConnecte'
-import CreerCompteFrom from './components/CreerCompteForm'
+
 
 export default function telecharger() {
-    const [showModalSeconnecter, setshowModalSeconnecter] = useState(false);
-    const showSeconnecterModal=()=>{ 
-      setshowModalSeconnecter(!showModalSeconnecter)
-    }
+   
   
   return (
     <div className='text-slate-700'  style={{fontFamily:'Montserrat ,sans-serif' }}>
@@ -50,13 +46,10 @@ export default function telecharger() {
 
           <div className="flex items-center justify-center max-w-screen-md px-10 py-3 mt-12 bg-white shadow-xl rounded-2xl md:mx-auto 2xl:px-0 mx-7">
             <div className="my-10 md:w-8/12 lg:w-5/12">
-              <CreerCompteFrom setshowModalSeconnecter={setshowModalSeconnecter} showModal={showModalSeconnecter}/>
+              
             </div>
           </div>
         </section>
-
-        {showModalSeconnecter && <SeConnecter showModal={showSeconnecterModal}/>}
-        
         <MiniFooter />
     </div>
   )
