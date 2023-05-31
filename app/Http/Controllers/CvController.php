@@ -32,7 +32,7 @@ class CvController extends Controller
      */
     public function store(Request $request)
     {
-
+        
      
         $newCv =  Cv::create([
             "nomcv"=>$request->nomcv,
@@ -43,10 +43,9 @@ class CvController extends Controller
             Infopersonnelle::create([
                 "nom"=>$request->infopersonnelle['nom'],
                 "prenom"=>$request->infopersonnelle['prenom'],
-                "about"=>$request->infopersonnelle['about'],
+                "about"=>$request->infopersonnelle['profile'],
                 "email"=>$request->infopersonnelle["email"],
-                "adresse"=>$request->infopersonnelle['adresse'],
-                "tel"=>$request->infopersonnelle['tel'],
+                "tel"=>$request->infopersonnelle['tele'],
                 "cv_id"=>$newCv->id,
             ]);
             
@@ -56,9 +55,9 @@ class CvController extends Controller
         foreach($request->education as $education){
              Education::create([
                 "institution" => $education['institution'],
-                "dateDebut" => $education['dateDebut'],
-                "dateFin" => $education['dateFin'],
-                "description" => $education['description'],
+                "dateDebut" => $education['dateD'],
+                "dateFin" => $education['dateF'],
+                "description" => $education['desc'],
                 "cv_id"=>$newCv->id,
             ]);
             
@@ -66,11 +65,11 @@ class CvController extends Controller
         };
         foreach($request->experiencepro as $experiencepro){
             Experiencepro::create([
-                "position"=>$experiencepro['position'],
-                "location"=>$experiencepro['location'],
-                "dateDebut"=>$experiencepro["dateDebut"],
-                "dateFin"=>$experiencepro["dateFin"],
-                "description"=>$experiencepro["description"],
+                "position"=>$experiencepro['pos'],
+                "location"=>$experiencepro['loc'],
+                "dateDebut"=>$experiencepro["dateD"],
+                "dateFin"=>$experiencepro["dateF"],
+                "description"=>$experiencepro["desc"],
                 "cv_id"=>$newCv->id,
         ]);
        
@@ -78,7 +77,7 @@ class CvController extends Controller
         };
         foreach($request->language as $language){
             Language::create([
-                "language"=>$language["language"],
+                "language"=>$language["lang"],
                 "level"=>$language["level"],
                 "cv_id"=>$newCv->id,
             ]);
@@ -87,12 +86,13 @@ class CvController extends Controller
         };
         foreach($request->competence as $competence){
             Competence::create([
-                "competence"=>$competence["competence"],
+                "competence"=>$competence["compétence"],
                 "cv_id"=>$newCv->id,
             ]);
         
-        
+            
         };
+        return response()->json($newCv, 200 );
     }
 
     /**

@@ -3,7 +3,8 @@ import jsPDF from 'jspdf';
 import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
 import axiosClient from '../../../axiosClient';
-
+import axios from 'axios';
+import {useStateContext} from '../../../context/ContextProvider'
 function App() {
   const perso = useSelector(state=>state.perso)
   const edu = useSelector(state=>state.edu)
@@ -11,6 +12,7 @@ function App() {
   const skills = useSelector(state=>state.skills)
   const langs = useSelector(state=>state.lang)
 	const reportTemplateRef = useRef(null);
+  const {token}=useStateContext()
   // saving cv to localSorage
   // const myCV = JSON.stringify([cv])
   // localStorage.setItem("localCV",myCV);
@@ -31,7 +33,7 @@ function App() {
   const saveCv = ()=>{
     const cv = {nomcv:"cv1",infopersonnelle:perso,education:edu.data.educations,experiencepro:exp.data.exps,language:langs.data.langs,competence:skills.data.skills}
     console.log("cv:", cv)
-    axiosClient.post("/cv" , cv).then(err=>console.log(err))
+    axiosClient.post("/cv",cv).then(repons=>console.log(repons))
   }
 
 	return (
