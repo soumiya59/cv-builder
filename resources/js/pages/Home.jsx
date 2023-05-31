@@ -134,7 +134,8 @@ export default function Home() {
                   <a
                     href="#"
                     className="block px-3 py-2 text-base font-medium text-black rounded-md hover:bg-mediumblue hover:text-white"
-                  > Mes CV </a>
+                  > Mes CV 
+                  </a>
                   <a
                     href="#"
                     className="block px-3 py-2 text-base font-medium text-black rounded-md hover:bg-mediumblue hover:text-white"
