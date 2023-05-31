@@ -28,7 +28,7 @@ function App() {
 		});
 	};
   const saveCv = ()=>{
-    const cv = {nomcv:"cv1",infopersonnelle:perso,education:edu,experiencepro:exp,language:langs,competence:skills}
+    const cv = {nomcv:"cv1",infopersonnelle:perso,education:edu.data.educations,experiencepro:exp.data.exps,language:langs.data.langs,competence:skills.data.skills}
     console.log("cv:", cv)
   }
 
