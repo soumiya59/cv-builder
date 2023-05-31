@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import jsPDF from 'jspdf';
 import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
+import axiosClient from '../../../axiosClient';
 
 function App() {
   const perso = useSelector(state=>state.perso)
@@ -10,7 +11,6 @@ function App() {
   const skills = useSelector(state=>state.skills)
   const langs = useSelector(state=>state.lang)
 	const reportTemplateRef = useRef(null);
-
   // saving cv to localSorage
   // const myCV = JSON.stringify([cv])
   // localStorage.setItem("localCV",myCV);
@@ -28,16 +28,23 @@ function App() {
 			},
 		});
 	};
+  const saveCv = ()=>{
+    const cv = {nomcv:"cv1",infopersonnelle:perso,education:edu.data.educations,experiencepro:exp.data.exps,language:langs.data.langs,competence:skills.data.skills}
+    console.log("cv:", cv)
+    axiosClient.post("/cv" , cv).then(err=>console.log(err))
+  }
 
 	return (
 		<div>
       <div className='flex text-lg text-white'>
-        <button className=" bg-mediumblue px-3 py-1 rounded-2xl flex ml-auto mt-2" onClick={handleGeneratePdf}>
+        <button className=" bg-mediumblue px-3 py-1 rounded-2xl flex ml-auto mt-2" onClick={saveCv}>
+          Enregistrer
+        </button>
+        <button className=" bg-mediumblue px-3 py-1 rounded-2xl flex mx-2 mt-2" onClick={handleGeneratePdf}>
           Télécharger
         </button>
-  
         <Link to='/modeles' >
-        <button className='bg-mediumblue px-3 py-1 rounded-2xl flex mt-2 mx-2'>changer </button>
+        <button className='bg-mediumblue px-3 py-1 rounded-2xl flex mt-2 mr-2'>changer </button>
         </Link>
       </div>
 
