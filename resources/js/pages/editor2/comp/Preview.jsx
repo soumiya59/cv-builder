@@ -1,29 +1,59 @@
-import React from 'react';
+import { useRef } from 'react';
+import jsPDF from 'jspdf';
 import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
 
-const Resume = () => {
-  const cv = useSelector(state=>state.cv)
-  const perso = cv.find((cv)=>cv.id==='perso')
-  const edu = cv.find((cv)=>cv.id==='edu')
-  const exp = cv.find((cv)=>cv.id==='exp')
-  const skills = cv.find((cv)=>cv.id==='skills')
-  const langs = cv.find((cv)=>cv.id==='langs')
+function App() {
+  const perso = useSelector(state=>state.perso)
+  const edu = useSelector(state=>state.edu)
+  const exp = useSelector(state=>state.exp)
+  const skills = useSelector(state=>state.skills)
+  const langs = useSelector(state=>state.lang)
+	const reportTemplateRef = useRef(null);
 
-  return (
-    <div className=" mt-5 relative">
-      <div className='mx-auto w-11/12 md:w-3/4 lg:w-3/4 xl:w-2/3 bg-white p-10 rounded-lg pb-16'>
-      {
+  // saving cv to localSorage
+  // const myCV = JSON.stringify([cv])
+  // localStorage.setItem("localCV",myCV);
+
+  // downloading cv to PDF
+	const handleGeneratePdf = () => {
+		const doc = new jsPDF({
+			format: 'a3',
+			unit: 'pt',
+		});
+		doc.setFont('Inter-Regular', 'normal');
+		doc.html(reportTemplateRef.current, {
+			async callback(doc) {
+				await doc.save('CV');
+			},
+		});
+	};
+
+	return (
+		<div>
+      <div className='flex text-lg text-white'>
+        <button className=" bg-mediumblue px-3 py-1 rounded-2xl flex ml-auto mt-2" onClick={handleGeneratePdf}>
+          Télécharger
+        </button>
+  
+        <Link to='/modeles' >
+        <button className='bg-mediumblue px-3 py-1 rounded-2xl flex mt-2 mx-2'>changer </button>
+        </Link>
+      </div>
+
+			<div className=" relative mx-16 mt-2">
+       <div ref={reportTemplateRef} className=' bg-white rounded-lg p-8 text-sm' >
+       {
        perso.nom || perso.prenom || perso.image || perso.tele || perso.email || perso.profile?
        <>
-       <section className='flex'>
+       <div className='flex'>
         <img src={perso.image} alt="Selected image" className="w-24 h-24 rounded-lg mr-5"/>
         <div>
-          <h1 className="text-3xl font-bold ">{perso.prenom}{perso.nom}</h1>
+          <h1 className="text-3xl font-bold ">{perso.prenom} {perso.nom}</h1>
           <p>{perso.email}</p>
           <p>{perso.tele}</p>
         </div>
-       </section>
+       </div>
        <p className='mt-5'>{perso.profile}</p>
        </>
        :
@@ -39,14 +69,14 @@ const Resume = () => {
        <p className='mt-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, nisi necessitatibus Lorem ipsum dolor sit amet.</p>
        </>
       }
-      <p className="text-xl font-bold mb-2 mt-6">Skills</p>
-      {
+       <p className="text-xl font-bold mb-2 mt-6">Skills</p>
+       {
           skills.data?.skills[0].compétence!=="" ? 
 
             <ul className="list-disc list-inside">             
-            {skills.data?.skills.map((e)=>{
+            {skills.data?.skills.map((e,i)=>{
               return(
-              <li key={e}> {e.compétence} </li>
+              <li key={i}> {e.compétence} </li>
               )
             })}
             </ul>
@@ -66,9 +96,9 @@ const Resume = () => {
           exp?.data?.exps[0].loc!=="" || exp?.data?.exps[0].dateD!=="" ||  exp?.data?.exps[0].dateF!=="" || exp?.data?.exps[0].desc!=="" ?
             <div>
               {
-            exp?.data?.exps?.map((e)=>{
+            exp?.data?.exps?.map((e,i)=>{
               return(
-                <div className="mt-6" key={e}>
+                <div className="mt-6" key={i}>
                   <div className="mb-2 flex justify-between">
                     <p className="text-lg font-bold">{e.pos}</p>
                     <p className="text-md mb-1">{e.dateD} - {e.dateF}</p>
@@ -105,9 +135,9 @@ const Resume = () => {
             edu?.data?.educations[0].desc!=="" 
             ?
 
-            edu?.data?.educations?.map((e)=>{
+            edu?.data?.educations?.map((e,i)=>{
             return(
-            <div key={e}>
+            <div key={i}>
                   <div className="mb-2 flex justify-between">
                     <p className="text-lg font-bold">{e.institution}</p>
                     <p className="text-md mb-1">{e.dateD} - {e.dateF}</p>
@@ -130,9 +160,9 @@ const Resume = () => {
             langs?.data?.langs[0].lang || langs?.data?.level
             ?
             
-            langs?.data?.langs?.map((e)=>{
+            langs?.data?.langs?.map((e,i)=>{
               return(
-            <p key={e}>
+            <p key={i}>
                {e.lang} - {e.level}
             </p>
               )
@@ -144,9 +174,11 @@ const Resume = () => {
             </>
       }
       </div>
-      <Link to='/telecharger' className='absolute top-0 right-5'>
-      <button className='text-lg float-right bg-mediumblue text-white px-3 py-1 rounded-2xl'>Telecharger</button>
-      </Link>
-    </div>
-  )}
-export default Resume;
+      </div>
+
+			</div>
+      
+	);
+}
+
+export default App;
