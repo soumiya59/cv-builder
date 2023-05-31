@@ -23,7 +23,7 @@ class infopersonnelleFactory extends Factory
             'prenom' => $this->faker->firstName,
             'about' => $this->faker->paragraph,
             'email' => $this->faker->unique()->safeEmail,
-            'adresse' => $this->faker->address,
+            // 'adresse' => $this->faker->address,
             'tel' => $this->faker->phoneNumber,
         ];
     }
