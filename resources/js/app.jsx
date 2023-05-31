@@ -8,18 +8,14 @@ import Abuot from './pages/Abuot';
 import ReactDOM from 'react-dom/client';  
 import SeConnecter from './pages/Login';      
 import '../css/app.css'
+import GlobalStyles from '../css/globalstyles';
 import { ContextProvider } from './context/ContextProvider';
 import { BrowserRouter as Router , Routes, Route , Navigate} from "react-router-dom";  
-
 import { useStateContext } from "./context/ContextProvider";
 
 
 ReactDOM.createRoot(document.getElementById('app')).render(  
-     
-       
-    
     <div>
-
         <ContextProvider>
         <Router>
         <Routes>
