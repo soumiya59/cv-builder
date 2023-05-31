@@ -13,10 +13,9 @@ class CompetenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        
-        return $posts = User::find("user_id");
+        return  auth('api')->user();
     }
 
     /**

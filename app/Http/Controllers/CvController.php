@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Competence;
 use App\Models\Cv;
+use App\Models\Education;
+use App\Models\Experiencepro;
+use App\Models\Infopersonnelle;
+use App\Models\Language;
+use App\Models\User;
 use Illuminate\Http\Request;
+
 
 class CvController extends Controller
 {
@@ -14,17 +21,8 @@ class CvController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        //return  auth('api')->user();
+        return Cv::find(1);
     }
 
     /**
@@ -35,7 +33,67 @@ class CvController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+     
+        $newCv =  Cv::create([
+            "nomcv"=>$request->nomcv,
+            "user_id"=>auth('api')->user()->id
+        ]);
+        $newCv->save();
+        
+            Infopersonnelle::create([
+                "nom"=>$request->infopersonnelle['nom'],
+                "prenom"=>$request->infopersonnelle['prenom'],
+                "about"=>$request->infopersonnelle['about'],
+                "email"=>$request->infopersonnelle["email"],
+                "adresse"=>$request->infopersonnelle['adresse'],
+                "tel"=>$request->infopersonnelle['tel'],
+                "cv_id"=>$newCv->id,
+            ]);
+            
+            
+        
+        
+        foreach($request->education as $education){
+             Education::create([
+                "institution" => $education['institution'],
+                "dateDebut" => $education['dateDebut'],
+                "dateFin" => $education['dateFin'],
+                "description" => $education['description'],
+                "cv_id"=>$newCv->id,
+            ]);
+            
+            
+        };
+        foreach($request->experiencepro as $experiencepro){
+            Experiencepro::create([
+                "position"=>$experiencepro['position'],
+                "location"=>$experiencepro['location'],
+                "dateDebut"=>$experiencepro["dateDebut"],
+                "dateFin"=>$experiencepro["dateFin"],
+                "description"=>$experiencepro["description"],
+                "cv_id"=>$newCv->id,
+        ]);
+       
+    
+        };
+        foreach($request->language as $language){
+            Language::create([
+                "language"=>$language["language"],
+                "level"=>$language["level"],
+                "cv_id"=>$newCv->id,
+            ]);
+            
+
+        };
+        foreach($request->competence as $competence){
+            Competence::create([
+                "competence"=>$competence["competence"],
+                "cv_id"=>$newCv->id,
+            ]);
+        
+        
+        };
     }
 
     /**

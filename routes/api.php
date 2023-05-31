@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\CompetenceController;
+use App\Http\Controllers\CvController;
 use App\Http\Controllers\EducationController;
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });
 
-
+Route::apiResource('/cv', CvController::class);
 Route::apiResource('/education', EducationController::class);
 
 Route::apiResource('/competence', CompetenceController::class);

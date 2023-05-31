@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Education;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EducationController extends Controller
@@ -14,7 +15,7 @@ class EducationController extends Controller
      */
     public function index()
     {
-        return Education::all();
+        return $posts = User::find("user_id")->posts;
     }
 
     /**
