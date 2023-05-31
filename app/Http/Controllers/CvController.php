@@ -8,7 +8,6 @@ use App\Models\Education;
 use App\Models\Experiencepro;
 use App\Models\Infopersonnelle;
 use App\Models\Language;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -102,9 +101,17 @@ class CvController extends Controller
      * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function show(Cv $cv)
+    public function show($id)
     {
-        //
+        $cv=Cv::find($id);
+        $datacv["cvinfo"]=Cv::find($cv->id);
+        $datacv["infopersonnelle"]=$cv->infopersonnelles;
+        $datacv["competence"]=$cv->competences;
+        $datacv["education"]=$cv->educations;
+        $datacv["experiencepro"]=$cv->experiencepros;
+        $datacv["language"]=$cv->languages;
+        return response()->json($datacv, 200 );
+ 
     }
 
     /**
