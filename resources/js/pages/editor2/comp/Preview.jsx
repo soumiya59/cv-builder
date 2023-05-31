@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import jsPDF from 'jspdf';
 import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
+import axiosClient from '../../../axiosClient';
 
 function App() {
   const perso = useSelector(state=>state.perso)
@@ -30,6 +31,7 @@ function App() {
   const saveCv = ()=>{
     const cv = {nomcv:"cv1",infopersonnelle:perso,education:edu.data.educations,experiencepro:exp.data.exps,language:langs.data.langs,competence:skills.data.skills}
     console.log("cv:", cv)
+    axiosClient.post("/cv" , cv).then(err=>console.log(err))
   }
 
 	return (
