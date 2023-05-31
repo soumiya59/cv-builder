@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\Cv;
 class Language extends Model
 {
     use HasFactory;
-    public function user(){
-        return $this->belongsTo(User::class , 'cv_id');
+    protected $fillable = ["language","level", "cv_id"];
+    public function cv(){
+        return $this->belongsTo(Cv::class , 'cv_id');
     }
 }

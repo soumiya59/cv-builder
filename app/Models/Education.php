@@ -8,7 +8,8 @@ use App\Models\User;
 class Education extends Model
 {
     use HasFactory;
-    public function user(){
-        return $this->belongsTo(User::class , 'cv_id');
+    protected $fillable = ["institution", "dateDebut","dateFin","description","cv_id"];
+    public function cv(){
+        return $this->belongsTo(Cv::class , 'cv_id');
     }
 }
