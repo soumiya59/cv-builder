@@ -21,7 +21,8 @@ class CvController extends Controller
     public function index()
     {
         //return  auth('api')->user();
-        return Cv::find(1);
+        $cvs = Cv::all();
+        return response()->json($cvs, 200 );
     }
 
     /**
@@ -59,9 +60,7 @@ class CvController extends Controller
                 "dateFin" => $education['dateF'],
                 "description" => $education['desc'],
                 "cv_id"=>$newCv->id,
-            ]);
-            
-            
+            ]); 
         };
         foreach($request->experiencepro as $experiencepro){
             Experiencepro::create([
@@ -81,16 +80,12 @@ class CvController extends Controller
                 "level"=>$language["level"],
                 "cv_id"=>$newCv->id,
             ]);
-            
-
         };
         foreach($request->competence as $competence){
             Competence::create([
                 "competence"=>$competence["compétence"],
                 "cv_id"=>$newCv->id,
-            ]);
-        
-            
+            ]); 
         };
         return response()->json($newCv, 200 );
     }
@@ -120,9 +115,16 @@ class CvController extends Controller
      * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cv $cv)
+    public function edit($id)
     {
-        //
+        $cv=Cv::find($id);
+        $datacv["cvinfo"]=Cv::find($cv->id);
+        $datacv["infopersonnelle"]=$cv->infopersonnelles;
+        $datacv["competence"]=$cv->competences;
+        $datacv["education"]=$cv->educations;
+        $datacv["experiencepro"]=$cv->experiencepros;
+        $datacv["language"]=$cv->languages;
+        return response()->json($datacv, 200 );
     }
 
     /**
@@ -143,8 +145,9 @@ class CvController extends Controller
      * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cv $cv)
+    public function destroy( $id)
     {
-        //
+        $cv=Cv::find($id);
+        $cv->delete();
     }
 }
