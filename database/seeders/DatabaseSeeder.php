@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         Experiencepro::factory()->count(20)->create();
         Infopersonnelle::factory()->count(10)->create();
         Language::factory()->count(20)->create();
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("prenom");
             $table->string("about");
             $table->string("email");
-            $table->string("adresse");
+            // $table->string("adresse");
             $table->string("tel");
             $table->unsignedBigInteger('cv_id');
             $table->timestamps();

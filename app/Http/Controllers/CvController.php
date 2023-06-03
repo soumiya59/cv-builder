@@ -41,17 +41,15 @@ class CvController extends Controller
         ]);
         $newCv->save();
         
-            Infopersonnelle::create([
+        $perso = infopersonnelle::create([
                 "nom"=>$request->infopersonnelle['nom'],
                 "prenom"=>$request->infopersonnelle['prenom'],
                 "about"=>$request->infopersonnelle['profile'],
                 "email"=>$request->infopersonnelle["email"],
                 "tel"=>$request->infopersonnelle['tele'],
                 "cv_id"=>$newCv->id,
-            ]);
-            
-            
-        
+        ]);
+        $perso->save();
         
         foreach($request->education as $education){
              Education::create([
@@ -88,6 +86,7 @@ class CvController extends Controller
             ]); 
         };
         return response()->json($newCv, 200 );
+
     }
 
     /**
