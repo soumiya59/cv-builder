@@ -19,7 +19,7 @@ const DESCRIPTION = tw.h1` text-sm md:text-xl font-light `
 const CARD = tw.div`flex items-center `
 const ICON = tw.img` max-h-32  md:pr-5`
 
-export default function Home() {
+export default function Home2() {
 const [showModal, setShowModal] = useState(false);
 const [isOpen, setIsOpen] = useState(false);
 return (
