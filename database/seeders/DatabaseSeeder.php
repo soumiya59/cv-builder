@@ -4,7 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\Education;
+use App\Models\Competence;
+use App\Models\Experiencepro;
+use App\Models\Infopersonnelle;
+use App\Models\Language;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,7 +18,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(10)->create();
+        \App\Models\Cv::factory(10)->create();
+        Education::factory()->count(10)->create();
+        Competence::factory()->count(20)->create();
+        Experiencepro::factory()->count(20)->create();
+        Infopersonnelle::factory()->count(10)->create();
+        Language::factory()->count(20)->create();
+        \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -5,26 +5,31 @@ import Telecharger from './pages/Telecharger'
 import Profile from '../js/pages/Profile'
 import MonCompt from './pages/MonCompte';
 import Abuot from './pages/Abuot';
-import ReactDOM from 'react-dom/client';        
+import ReactDOM from 'react-dom/client';  
+import SeConnecter from './pages/Login';      
 import '../css/app.css'
 import GlobalStyles from '../css/globalstyles';
-import { BrowserRouter as Router , Routes, Route} from "react-router-dom";  
-import Cvzohayr1 from './pages/CVs/Cvzohayr1';
+import { ContextProvider } from './context/ContextProvider';
+import { BrowserRouter as Router , Routes, Route , Navigate} from "react-router-dom";  
+import { useStateContext } from "./context/ContextProvider";
+
 
 ReactDOM.createRoot(document.getElementById('app')).render(  
-      <Router>
-          <Routes>
-                <Route path="/" element={<Home />} />
+    <div>
+        <ContextProvider>
+        <Router>
+        <Routes>
+        <Route path="/" element={<Home />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/modeles" element={<Modeles  />} />
                 <Route path="/telecharger" element={<Telecharger  />} />
-                <Route path="/MonCompte" element={<MonCompt  />} />
+                <Route path="/MonCompte/:id" element={<MonCompt  />} /> 
+               {/*  <PrivateRoute path="/MonCompte" element={<MonCompt />} /> */}
                 <Route path="/About" element={<Abuot />} />
                 <Route path="/editeur" element={<Editeur />} />
-          </Routes>
-      </Router> 
-    
-    // <div>
-    //     {/* <Cvzohayr1 /> */}
-    //  </div>
+                <Route path="/login" element={<SeConnecter />} />
+        </Routes>
+    </Router> 
+    </ContextProvider>
+     </div>
 );

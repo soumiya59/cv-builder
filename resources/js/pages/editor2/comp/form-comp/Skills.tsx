@@ -1,6 +1,6 @@
 import React from "react"
 import { Field,Formik,Form, useFormikContext, ErrorMessage  } from "formik";
-import { setSkills } from "../../cvSlice";
+import { setSkills } from "../../slices/skillsSlice";
 import { useDispatch } from "react-redux";
 import tw from "twin.macro";
 

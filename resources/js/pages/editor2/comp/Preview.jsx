@@ -2,18 +2,22 @@ import { useRef } from 'react';
 import jsPDF from 'jspdf';
 import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
+import axiosClient from '../../../axiosClient';
+import { useTranslation } from 'react-i18next'
 
 function App() {
-  const cv = useSelector(state=>state.cv)
-  const perso = cv.find((cv)=>cv.id==='perso')
-  const edu = cv.find((cv)=>cv.id==='edu')
-  const exp = cv.find((cv)=>cv.id==='exp')
-  const skills = cv.find((cv)=>cv.id==='skills')
-  const langs = cv.find((cv)=>cv.id==='langs')
+  const perso = useSelector(state=>state.perso)
+  const edu = useSelector(state=>state.edu)
+  const exp = useSelector(state=>state.exp)
+  const skills = useSelector(state=>state.skills)
+  const langs = useSelector(state=>state.lang)
 	const reportTemplateRef = useRef(null);
+  const { t } = useTranslation();
+
   // saving cv to localSorage
-  const myCV = JSON.stringify([cv])
-  localStorage.setItem("localCV",myCV);
+  // const myCV = JSON.stringify([cv])
+  // localStorage.setItem("localCV",myCV);
+
   // downloading cv to PDF
 	const handleGeneratePdf = () => {
 		const doc = new jsPDF({
@@ -27,16 +31,23 @@ function App() {
 			},
 		});
 	};
+  const saveCv = ()=>{
+    const cv = {nomcv:"cv1",infopersonnelle:perso,education:edu.data.educations,experiencepro:exp.data.exps,language:langs.data.langs,competence:skills.data.skills}
+    console.log("cv:", cv)
+    axiosClient.post("/cv" , cv).then(err=>console.log(err))
+  }
 
 	return (
 		<div>
       <div className='flex text-lg text-white'>
-        <button className=" bg-mediumblue px-3 py-1 rounded-2xl flex ml-auto mt-2" onClick={handleGeneratePdf}>
-          Télécharger
+        <button className=" bg-mediumblue px-3 py-1 rounded-2xl flex ml-auto mt-2" onClick={saveCv}>
+          {t("Enregistrer")} 
         </button>
-  
+        <button className=" bg-mediumblue px-3 py-1 rounded-2xl flex mx-2 mt-2" onClick={handleGeneratePdf}>
+           {t("Télécharger")} 
+        </button>
         <Link to='/modeles' >
-        <button className='bg-mediumblue px-3 py-1 rounded-2xl flex mt-2 mx-2'>changer </button>
+        <button className='bg-mediumblue px-3 py-1 rounded-2xl flex mt-2 mr-2'> {t("changer")}  </button>
         </Link>
       </div>
 
@@ -73,9 +84,9 @@ function App() {
           skills.data?.skills[0].compétence!=="" ? 
 
             <ul className="list-disc list-inside">             
-            {skills.data?.skills.map((e)=>{
+            {skills.data?.skills.map((e,i)=>{
               return(
-              <li key={e}> {e.compétence} </li>
+              <li key={i}> {e.compétence} </li>
               )
             })}
             </ul>
@@ -95,9 +106,9 @@ function App() {
           exp?.data?.exps[0].loc!=="" || exp?.data?.exps[0].dateD!=="" ||  exp?.data?.exps[0].dateF!=="" || exp?.data?.exps[0].desc!=="" ?
             <div>
               {
-            exp?.data?.exps?.map((e)=>{
+            exp?.data?.exps?.map((e,i)=>{
               return(
-                <div className="mt-6" key={e}>
+                <div className="mt-6" key={i}>
                   <div className="mb-2 flex justify-between">
                     <p className="text-lg font-bold">{e.pos}</p>
                     <p className="text-md mb-1">{e.dateD} - {e.dateF}</p>
@@ -134,9 +145,9 @@ function App() {
             edu?.data?.educations[0].desc!=="" 
             ?
 
-            edu?.data?.educations?.map((e)=>{
+            edu?.data?.educations?.map((e,i)=>{
             return(
-            <div key={e}>
+            <div key={i}>
                   <div className="mb-2 flex justify-between">
                     <p className="text-lg font-bold">{e.institution}</p>
                     <p className="text-md mb-1">{e.dateD} - {e.dateF}</p>
@@ -159,9 +170,9 @@ function App() {
             langs?.data?.langs[0].lang || langs?.data?.level
             ?
             
-            langs?.data?.langs?.map((e)=>{
+            langs?.data?.langs?.map((e,i)=>{
               return(
-            <p key={e}>
+            <p key={i}>
                {e.lang} - {e.level}
             </p>
               )
