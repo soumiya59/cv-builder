@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\CvController;
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\GetcvuserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
    
 
 });
-
+Route::get("/getcvuser",[GetcvuserController::class , 'getcvuser']);
 Route::apiResource('/cv', CvController::class);
 Route::apiResource('/education', EducationController::class);
 
