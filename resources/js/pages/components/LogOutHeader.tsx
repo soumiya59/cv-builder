@@ -20,6 +20,7 @@ export default function LogOutHeader() {
               </Link>
               <div className="hidden ml-auto md:block">
                 <div className="flex items-baseline justify-end ml-10 space-x-4 ">
+            
                   <p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
                     <Link to="/profile">Mes cv</Link>
                   </p>
