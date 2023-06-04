@@ -32,8 +32,8 @@ class CvController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        
+    { 
+       
      
         $newCv =  Cv::create([
             "nomcv"=>$request->nomcv,
