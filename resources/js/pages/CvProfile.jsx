@@ -40,13 +40,14 @@ function CvProfile() {
         <div className="  grid md:grid-cols-1 lg:grid-cols-2 w-5/6 mx-auto sm:grid-cols-1  gap-x-10 gap-y-14    ">
             {dataCv.map((cv) => (
                 <div className=" bg-[#fbffff]  shadow-xl rounded-lg md:pb-10 sm:pb-5  pb-6 border-2 border-[#d4ebee] flex flex-row transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300  ">
-                    {/*  <img src={perso.image} alt="Selected image" className="w-24 h-24 rounded-lg mr-5"/> */}
+                    
 
                     <div>
                         <div className=" bg-white rounded-lg p-8 text-sm">
                             {cv.infopersonnelle.map((infoPers) => (
                                 <>
                                     <div className="flex">
+                                          <img src={`http://127.0.0.1:8000/storage/${infoPers.image}`} alt="Selected image" className="w-24 h-24 rounded-lg mr-5"/>
                                         <div>
                                             <h1 className="text-3xl font-bold ">
                                                 {infoPers.prenom} {infoPers.nom}
@@ -104,7 +105,7 @@ function CvProfile() {
                                 return (
                                     <div key={i}>
                                         <div className="mb-2 flex justify-between">
-                                            <p className="text-lg font-bold">
+                                            <p className="text-md font-bold">
                                                 {e.institution}
                                             </p>
                                             <p className="text-md mb-1">
@@ -136,7 +137,7 @@ function CvProfile() {
                                 {cv.nomcv}
                             </h1>
                             <h5 className="text-gray-400 text-1xl mb-5 ml-2 ">
-                                {cv.updated_at}
+                              
                             </h5>
                             <div className="flex justify-start ml-2 ">
                                 <img

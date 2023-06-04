@@ -9,6 +9,8 @@ use App\Models\Experiencepro;
 use App\Models\Infopersonnelle;
 use App\Models\Language;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 class CvController extends Controller
@@ -33,8 +35,20 @@ class CvController extends Controller
      */
     public function store(Request $request)
     { 
-       
+        
+        $image_64 = $request->image; 
+        $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];      
+        $replace = substr($image_64, 0, strpos($image_64, ',')+1); 
+       $image = str_replace($replace, '', $image_64);   
+       $image = str_replace(' ', '+', $image); 
+       $imageName = Str::random(10).'.'.$extension;
+       Storage::disk('public')->put($imageName, base64_decode($image));
+       $link=asset('storage/'.$imageName);
      
+        
+    
+       
+      
         $newCv =  Cv::create([
             "nomcv"=>$request->nomcv,
             "user_id"=>auth('api')->user()->id
@@ -43,6 +57,7 @@ class CvController extends Controller
         
         $perso = infopersonnelle::create([
                 "nom"=>$request->infopersonnelle['nom'],
+                "image"=>$imageName,
                 "prenom"=>$request->infopersonnelle['prenom'],
                 "about"=>$request->infopersonnelle['profile'],
                 "email"=>$request->infopersonnelle["email"],
@@ -97,6 +112,7 @@ class CvController extends Controller
      */
     public function show($id)
     {
+
         $cv=Cv::find($id);
         $datacv["cvinfo"]=Cv::find($cv->id);
         $datacv["infopersonnelle"]=$cv->infopersonnelles;
