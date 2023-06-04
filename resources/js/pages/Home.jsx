@@ -30,7 +30,6 @@ export default function Home() {
   useEffect(() => {
     axiosClient.get(`/user`)
       .then(({ data }) => {
-
         setUser(data)
       })
   }, [])
