@@ -29,7 +29,7 @@ function App() {
 		});
 	};
   const saveCv = ()=>{
-    const cv = {nomcv:"cv1",infopersonnelle:perso,education:edu.data.educations,experiencepro:exp.data.exps,language:langs.data.langs,competence:skills.data.skills}
+    const cv = {nomcv:"cv1",infopersonnelle:perso , image:perso.image,education:edu.data.educations,experiencepro:exp.data.exps,language:langs.data.langs,competence:skills.data.skills}
     console.log("cv:", cv)
     axiosClient.post("/cv" , cv).then(err=>console.log(err))
   }
@@ -54,7 +54,7 @@ function App() {
        perso.nom || perso.prenom || perso.image || perso.tele || perso.email || perso.profile?
        <>
        <div className='flex'>
-        <img src={perso.image} alt="Selected image" className="w-24 h-24 rounded-lg mr-5"/>
+        <img src={perso.image} alt="Selected image"  className="w-24 h-24 rounded-lg mr-5"/>
         <div>
           <h1 className="text-3xl font-bold ">{perso.prenom} {perso.nom}</h1>
           <p>{perso.email}</p>

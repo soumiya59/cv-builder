@@ -61,7 +61,7 @@ export default function Home() {
                     {token && <Link to="/profile">Mes cv</Link>}
                   </p>
                   <p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
-                    {token && <Link to={`/monCompte/${user.id}`}> Mon Compte  </Link>}
+                    {token && <Link to={`/monCompte/${user?.id}`}> Mon Compte  </Link>}
                   </p>
                   {!token ?
                     <button className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 " onClick={() => setShowModal(true)} > Connexion</button>

@@ -30,7 +30,7 @@ export default function Formulaire({styles}){
         {({ values, handleSubmit, setFieldValue }) => (
         <Form>
             <HEADER >
-              <img src="images/editor/info.png" alt="" className="mr-3 h-6 self-center"/>
+              <img src="images/editor/info.png" alt="image"  typeof="file" className="mr-3 h-6 self-center"/>
               Information Personnelles
             </HEADER>
             <div className=" grid grid-cols-3 grid-rows-2 gap-5" >
