@@ -17,7 +17,7 @@ class GetcvuserController extends Controller
             $cv["competence"]=$cv->competences;
             $cv["education"]=$cv->educations;
             $cv["experiencepro"]=$cv->experiencepros;
-            $cv["language"]=$cv->languages; 
+            $cv["language"]=$cv->languages;
         }
         return response()->json($cvs, 200 );
       
