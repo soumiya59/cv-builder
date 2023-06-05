@@ -1,9 +1,10 @@
-import jsPDF from "jspdf";
 import { useEffect, useState } from "react";
+import { useRef } from 'react';
 import TelechargerModal from "./modals/TelechargerModal";
 import SupprimerModal from "./modals/SupprimerModal";
 import Partager from "./modals/Partager";
 import axiosClient from "../axiosClient";
+import jsPDF from 'jspdf';
 function CvProfile() {
     const [showModalTelecherger, setshowModalTelecherger] = useState(false);
     const [showModalSupprimer, setshowModalSupprimer] = useState(false);
@@ -36,13 +37,26 @@ function CvProfile() {
         console.log(dataCv);
     }, [dataCv]);
 
+	const reportTemplateRef = useRef(null);
+	const handleGeneratePdf = () => {
+		const doc = new jsPDF({
+			format: 'a4',
+			unit: 'pt',
+		});
+		doc.setFont('Inter-Regular', 'normal');
+		doc.html(reportTemplateRef.current, {
+			async callback(doc) {
+				await doc.save('CV');
+			},
+		});
+	};
     return (
         <div className="  grid md:grid-cols-1 lg:grid-cols-2 w-5/6 mx-auto sm:grid-cols-1  gap-x-10 gap-y-14 ">
             {dataCv.map((cv) => (
-                <div className=" bg-[#fbffff]  shadow-xl rounded-lg md:pb-10 sm:pb-5  pb-6 border-2 border-[#d4ebee]  transition ease-in-out delay-75  ">
+                <div    className=" bg-[#fbffff]  shadow-xl rounded-lg md:pb-10 sm:pb-5  pb-6 border-2 border-[#d4ebee]  transition ease-in-out delay-75  ">
                     
 
-                        <div className=" bg-white rounded-lg p-8 text-sm border-2  mb-5">
+                        <div ref={reportTemplateRef} className=" bg-white rounded-lg p-8 text-sm   mb-5">
                             {cv.infopersonnelle.map((infoPers) => (
                                 <>
                                     <div className="flex">
@@ -131,7 +145,7 @@ function CvProfile() {
                                 );
                             })}
                         </div>
-                        <div className="basis-3/6 grid grid-flow-row auto-rows-max content-center hover:auto-rows-min  px-5">
+                        <div className="basis-3/6 grid grid-flow-row auto-rows-max content-center hover:auto-rows-min  px-5 border-t-2 pt-5">
                             <h1 className="font-Montserrat ml-2 text-4xl mb-3 text-gray-700">
                                 {cv.nomcv}
                             </h1>
@@ -157,13 +171,16 @@ function CvProfile() {
                                     src="images/icons/share.png"
                                     className=" w-7 mb-2 md:w-10 md:mb-3    "
                                 />
-                                <button
+                                {/* <button
                                     className="mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100"
                                     type="button"
                                     onClick={() => statemodalPartager()}
                                 >
                                     Partager
-                                </button>
+                                </button> */}
+        <button className="mb-2 ml-4 md:text-2xl sm:text-sm font-Montserrat text-gray-400/100" onClick={handleGeneratePdf}>
+           Télécharger 
+        </button>
                             </div>
                             <div className="flex justify-start ml-2">
                                 <img
