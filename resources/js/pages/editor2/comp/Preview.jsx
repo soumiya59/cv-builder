@@ -3,8 +3,8 @@ import jsPDF from 'jspdf';
 import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
 import axiosClient from '../../../axiosClient';
-import axios from 'axios';
-import {useStateContext} from '../../../context/ContextProvider'
+import { useTranslation } from 'react-i18next'
+
 function App() {
   const perso = useSelector(state=>state.perso)
   const edu = useSelector(state=>state.edu)
@@ -12,7 +12,8 @@ function App() {
   const skills = useSelector(state=>state.skills)
   const langs = useSelector(state=>state.lang)
 	const reportTemplateRef = useRef(null);
-  const {token}=useStateContext()
+  const { t } = useTranslation();
+
   // saving cv to localSorage
   // const myCV = JSON.stringify([cv])
   // localStorage.setItem("localCV",myCV);
@@ -40,13 +41,13 @@ function App() {
 		<div>
       <div className='flex text-lg text-white'>
         <button className=" bg-mediumblue px-3 py-1 rounded-2xl flex ml-auto mt-2" onClick={saveCv}>
-          Enregistrer
+          {t("Enregistrer")} 
         </button>
         <button className=" bg-mediumblue px-3 py-1 rounded-2xl flex mx-2 mt-2" onClick={handleGeneratePdf}>
-          Télécharger
+           {t("Télécharger")} 
         </button>
         <Link to='/modeles' >
-        <button className='bg-mediumblue px-3 py-1 rounded-2xl flex mt-2 mr-2'>changer </button>
+        <button className='bg-mediumblue px-3 py-1 rounded-2xl flex mt-2 mr-2'> {t("changer")}  </button>
         </Link>
       </div>
 

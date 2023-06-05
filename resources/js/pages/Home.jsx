@@ -5,7 +5,8 @@ import tw from 'twin.macro'
 import Carousel from './components/Carousel'
 import Statistic from './components/Statistic'
 import Footer from './components/Footer'
-
+import i18n from './i18n'
+import { useTranslation } from 'react-i18next'
 import axiosClient from '../axiosClient'
 import { useStateContext } from "../context/ContextProvider";
 import CreerCompte from './modals/CreerCompte'
@@ -23,7 +24,8 @@ const CARD = tw.div`flex items-center `
 const ICON = tw.img` max-h-32  md:pr-5`
 
 export default function Home() {
-
+  const { t } = useTranslation();
+  const [selectedLanguage, setSelectedLanguage] =  useState(i18n.language);
   const { token, logout } = useStateContext()
   const [user, setUser] = useState({})
 
@@ -32,8 +34,14 @@ export default function Home() {
       .then(({ data }) => {
         setUser(data)
       })
-  }, [])
-
+    }, [])
+    
+    const handleChangeLanguage = (e) => {
+      e.preventDefault();
+        i18n.changeLanguage(e.target.value);   // i18n.changeLanguage() is used to change the language assigned to lng in i18n.js file.
+        setSelectedLanguage(e.target.value);   // i18n.changeLanguage() is used to change the language assigned to lng in i18n.js file.
+      
+    };
   const onLogout = (ev) => {
     ev.preventDefault()
     logout()
@@ -56,16 +64,27 @@ export default function Home() {
                 <img className="w-40" src="images/logo.svg" alt="logo" />
               </Link>
               <div className="hidden ml-auto md:block">
+            
                 <div className="flex items-baseline justify-end space-x-4 text-base">
+              <div className="w-40">
+              <select
+             defaultValue={selectedLanguage}
+             onChange={handleChangeLanguage}
+            className="block w-full py-2 px-3 bg-grey rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 	border-color: inherit "
+             >
+             <option  value="fr">French</option>
+             <option  value="en">English</option>  
+            </select>
+             </div>
                   <p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
-                    {token && <Link to="/profile">Mes cv</Link>}
+                    {token && <Link to="/profile">{t("Mes cv")}</Link>}
                   </p>
                   <p className="inline-block h-10 pr-3 text-center no-underline md:pt-2 hover:text-indigo-800 hover:text-underline md:h-auto md:pr-7 font-semibold text-gray-600" >
-                    {token && <Link to={`/monCompte/${user?.id}`}> Mon Compte  </Link>}
+                    {token && <Link to={`/monCompte/${user.id}`}> {t("Mon Compte")}  </Link>}
                   </p>
                   {!token ?
-                    <button className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 " onClick={() => setShowModal(true)} > Connexion</button>
-                    : <form onSubmit={onLogout}> <button onClick={onLogout} className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 "  > Deconnexion</button></form>}
+                    <button className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 " onClick={() => setShowModal(true)} > {t("Connexion")}  </button>
+                    : <form onSubmit={onLogout}> <button onClick={onLogout} className="inline-block px-4 py-2 text-white rounded-full bg-darkpink hover:opacity-90 "  > {t("Connexion")} </button></form>}
                   <div>
                     {showModal && <CreerCompte showModal={showModal} setShowModal={setShowModal} />}
                   </div>
@@ -133,12 +152,12 @@ export default function Home() {
                   <a
                     href="#"
                     className="block px-3 py-2 text-base font-medium text-black rounded-md hover:bg-mediumblue hover:text-white"
-                  > Mes CV 
+                  > {t("Mes CV ")}  
                   </a>
                   <a
                     href="#"
                     className="block px-3 py-2 text-base font-medium text-black rounded-md hover:bg-mediumblue hover:text-white"
-                  > Mon Compte </a>
+                  >{t("Mon Compte")}   </a>
                 </div>
               </div>
             )}
@@ -148,12 +167,12 @@ export default function Home() {
         <div className="container flex flex-col flex-wrap items-center px-6 mx-auto md:flex-row">
           {/* left col */}
           <div className="flex flex-col justify-center w-full mt-5 overflow-y-hidden xl:w-2/5 lg:items-start xl:mt-0 md:pl-2.5 ">
-            <h1 className="mb-4 text-3xl font-bold leading-tight text-center md:text-5xl md:text-left slide-in-bottom-h1">CONSTRUCTEUR EN LIGNE FACILE</h1>
-            <p className="mb-8 text-2xl leading-normal text-center md:text-left slide-in-bottom-subtitle">Utilisation gratuite, rapide et efficace.</p>
+            <h1 className="mb-4 text-3xl font-bold leading-tight text-center md:text-5xl md:text-left slide-in-bottom-h1">{t("CONSTRUCTEUR EN LIGNE FACILE")} </h1>
+            <p className="mb-8 text-2xl leading-normal text-center md:text-left slide-in-bottom-subtitle">{t("Utilisation gratuite, rapide et efficace.")} </p>
 
             <div className="flex justify-center w-full pb-5 md:justify-start lg:pb-0 fade-in ">
               <p className="px-5 py-3 text-2xl text-white transition duration-300 ease-in-out delay-75 rounded-3xl bg-darkpink hover:opacity-90 hover:-translate-y-1 hover:scale-110 ">
-                <Link to="/modeles"> créer votre cv </Link>
+                <Link to="/modeles">{t("créer votre cv ")}  </Link>
               </p>
             </div>
           </div>
@@ -165,7 +184,7 @@ export default function Home() {
 
         {/* steps */}
         <CONTAINER>
-          <TITLE>4 ÉTAPES FACILES POUR CRÉER VOTRE CV </TITLE>
+          <TITLE>{t("4 ÉTAPES FACILES POUR CRÉER VOTRE CV")}  </TITLE>
           <STEPS className=''>
             <IMG src="images/home/step1.png" alt="" className='' />
             <IMG src="images/home/step2.png" alt="" className='' />
@@ -173,49 +192,49 @@ export default function Home() {
             <IMG src="images/home/step4.png" alt="" className='' />
           </STEPS>
           <div className='container flex justify-around px-3 mx-auto my-5 mb-15 text-lg text-center xl:text-xl'>
-            <p className='-mr-10'>Choisir un modéle.</p>
-            <p className='pl-16 sm:pl-28 '>Remplir votre CV.</p>
-            <p className='md:pl-5'>Personnalisez le modéle</p>
-            <p className=''>Télécharger votre CV.</p>
+            <p className='-mr-10'>{t("Choisir un modéle.")} </p>
+            <p className='pl-16 sm:pl-28 '>{t(" Remplir votre CV.")}</p>
+            <p className='md:pl-5'>{t("Personnalisez le modéle")} </p>
+            <p className=''>{t("Télécharger votre CV")} .</p>
           </div>
         </CONTAINER>
 
         {/* modeles de cv */}
         <CONTAINER>
-          <TITLE>MODÈLES DE CV PROFESSIONNELS</TITLE>
+          <TITLE>{t("MODÈLES DE CV PROFESSIONNELS")} </TITLE>
           <Carousel />
         </CONTAINER>
 
         {/* poourquoi novoCV */}
         <CONTAINER>
-          <TITLE>Pourquoi utiliser le générateur de cv novocv?</TITLE>
+          <TITLE>{t("Pourquoi utiliser le générateur de cv novocv?")} </TITLE>
           <div className='grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-4  container mx-auto px-3 md:gap-9'>
             <CARD>
               <ICON src="/images/icons/fees.png" alt="" />
               <div>
-                <SOUSTITRE>Pas de frais cachés</SOUSTITRE>
-                <DESCRIPTION>Avec Novorésumé, vous ne passerez pas des heures à travailler sur votre CV, juste pour être frappé par un paywall caché.</DESCRIPTION>
+                <SOUSTITRE>{t("Pas de frais cachés")}</SOUSTITRE>
+                <DESCRIPTION>{t("Avec Novorésumé, vous ne passerez pas des heures à travailler sur votre CV, juste pour être frappé par un paywall caché")} </DESCRIPTION>
               </div>
             </CARD>
             <CARD>
               <ICON src="/images/icons/edit.png" alt="" className='' />
               <div>
-                <SOUSTITRE>Modifiez votre CV en temps réel</SOUSTITRE>
-                <DESCRIPTION>Lorsque vous modifiez votre CV avec notre constructeur, vous verrez immédiatement les modifications appliquées à votre document.</DESCRIPTION>
+                <SOUSTITRE>{t(" Modifiez votre CV en temps réel")}</SOUSTITRE>
+                <DESCRIPTION>{t("Lorsque vous modifiez votre CV avec notre constructeur, vous verrez immédiatement les modifications appliquées à votre document")} </DESCRIPTION>
               </div>
             </CARD>
             <CARD>
               <ICON src="/images/icons/feedback2.png" alt="" />
               <div>
-                <SOUSTITRE>Avoir un retour</SOUSTITRE>
-                <DESCRIPTION>Obtenez une révision de CV gratuite de la part de nos partenaires ou envoyez-la à vos amis pour obtenir des commentaires.</DESCRIPTION>
+                <SOUSTITRE>{t("Avoir un retour")} </SOUSTITRE>
+                <DESCRIPTION>{t("Obtenez une révision de CV gratuite de la part de nos partenaires ou envoyez-la à vos amis pour obtenir des commentaires")} </DESCRIPTION>
               </div>
             </CARD>
             <CARD>
               <ICON src="/images/icons/protect.png" alt="" />
               <div>
-                <SOUSTITRE>Contrôle des données et de la confidentialité</SOUSTITRE>
-                <DESCRIPTION>Nous ne partageons vos informations avec personne (sauf si vous nous le demandez explicitement)</DESCRIPTION>
+                <SOUSTITRE>{t(" Contrôle des données et de la confidentialité")}</SOUSTITRE>
+                <DESCRIPTION>{t(" Nous ne partageons vos informations avec personne (sauf si vous nous le demandez explicitement)")}</DESCRIPTION>
               </div>
             </CARD>
           </div>

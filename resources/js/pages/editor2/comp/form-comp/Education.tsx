@@ -3,34 +3,37 @@ import { Field,Formik,Form, useFormikContext, ErrorMessage  } from "formik";
 import { setEdu } from "../../slices/eduSlice";
 import { useDispatch } from "react-redux";
 import tw from "twin.macro";
+import i18n from "../../../i18n";
+import { useTranslation } from 'react-i18next'
 
 const MORE = tw.button`w-full my-4 rounded-xl bg-blue-50 text-mediumblue  border-mediumblue border-2 p-2 font-semibold`
 const REMOVE = tw.button`bg-lightblue mt-5 flex ml-auto text-white px-2 rounded-full`
 const LABEL = tw.label`text-gray-500 ml-2 mb-2 `
 
 function EducationFields({ name, values, errors, touched, onChange, onBlur ,styles}) {
+  const { t } = useTranslation();
   return (
     <div className="grid grid-rows-3 grid-cols-2 ">
       <label htmlFor={`${name}.institution`} className='col-span-2'>
-        <LABEL> Institution : </LABEL>
+        <LABEL>{t("Institution ")}: </LABEL>
         <Field type="text" name={`${name}.institution`} className={styles.fieldStyle} />
         <ErrorMessage name={`${name}.institution`} />
       </label>
 
       <label htmlFor={`${name}.dateD`} className='mr-5'>
-        <LABEL> Date Debut : </LABEL>
+        <LABEL>{t("Date Debut")} : </LABEL>
         <Field type="date" name={`${name}.dateD`} className={styles.fieldStyle} />
         <ErrorMessage name={`${name}.dateD`} />
       </label>
       
       <label htmlFor={`${name}.dateF`} >
-        <LABEL> Date Fin : </LABEL>
+        <LABEL> {t("Date Fin")} : </LABEL>
         <Field type="date" name={`${name}.dateF`} className={styles.fieldStyle} />
         <ErrorMessage name={`${name}.dateF`} />
       </label>
 
       <label htmlFor={`${name}.desc`} className='col-span-2'>
-        <LABEL>Description :</LABEL>
+        <LABEL>{t("Description")}:</LABEL>
         <Field as='textarea' type="text" name={`${name}.desc`} cols='50' rows='2' className={styles.txt} />
         <ErrorMessage name={`${name}.desc`} />
       </label>
