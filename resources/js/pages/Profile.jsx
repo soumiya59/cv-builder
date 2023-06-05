@@ -3,7 +3,7 @@ import { useStateContext } from "../context/ContextProvider";
 import LogOutHeader from './components/LogOutHeader'
 import MiniFooter from "./components/MiniFooter";
 
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import CvProfile from "./CvProfile";
 function Profile() {
     
@@ -32,7 +32,7 @@ function Profile() {
              
                 <div className="grid place-items-center mt-20">
                     <button id="btn-creastion" className="inline-block px-8 py-2 mt-8 mb-16 md:mb-24 text-2xl text-white rounded-full bg-darkpink hover:opacity-90">
-                        <p className="font-Montserrat ">créer nouveau cv</p>
+                        <Link to={"/editeur"} className="font-Montserrat ">créer nouveau cv</Link>
                     </button>
                 </div>
             </div>

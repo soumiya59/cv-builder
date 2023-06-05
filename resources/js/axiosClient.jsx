@@ -9,6 +9,7 @@ axiosClient.interceptors.request.use((config) => {
   const token = localStorage.getItem("ACCESS_TOKEN");
   config.headers.Authorization = `Bearer ${token}`;
   config.headers["Content-Type"] = 'application/x-www-form-urlencoded';
+
   return config;
 });
 
