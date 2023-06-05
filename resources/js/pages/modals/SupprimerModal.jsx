@@ -7,6 +7,7 @@ export default function SupprimerModal({statemodalsupprimer,cvsupprimer}) {
  const supp=()=>{
   console.log(cvsupprimer)
   axiosClient.delete(`/cv/${cvsupprimer}`)
+  window.location.reload();
  }
   return (
     <>

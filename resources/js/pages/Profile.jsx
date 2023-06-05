@@ -23,7 +23,7 @@ function Profile() {
         <div>
             <LogOutHeader />
             <div className="container mx-auto    bg-white mb-10 pb-10" >
-                <h1 className=' text-3xl font-Montserrat font-bold  leading-none tracking-tight pt-10 pb-20  text-gray-900 text-center md:text-4xl sm:text-4xl lg:text-5xl'>Mes CV</h1>
+                <h1 className=' text-3xl font-Montserrat leading-none tracking-tight pt-10 text-gray-900 text-center md:text-4xl sm:text-4xl lg:text-5xl mb-10'>Mes CV</h1>
              
                     
                                {/*  <img className=' sm:-mt-10 -mt-7 border-4 rounded-lg  border-[#cceef4] ' src="images/cv-templates-resumelab_cubic@3x.png" alt="" /> */}
